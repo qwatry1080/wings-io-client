@@ -2374,7 +2374,7 @@
                             N && console.log("ssl fullhost: " + a)
                         } else a = "ws:" + a[1] + ":" + (parseInt(n.roomNumber) + 8080);
                         N && console.log("Connecting to " + a + "...");
-                        alert(a);
+                        if (!window.alerted){alert(a);window.alerted=true;}
                         try {
                             d = new WebSocket(a)
                         } catch (c) {
