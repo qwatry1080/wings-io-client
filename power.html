@@ -485,11 +485,12 @@
             }
         }
         var N = !1,
-            Fb = l.location.href.split("/"),
+            /*Fb = l.location.href.split("/"),*/
+            Fb = "https://powerline.coolmathgames.com"
             Na = Fb[2],
             alert(Na),
             fake_referrer = "https://www.coolmathgames.com/0-powerline-io",
-            fake_location_href = "https://www.coolmathgames.com/0-powerline-io",
+            fake_location_href = "powerline.coolmathgames.com",
             /*ec = l.location != l.parent.location ? y.referrer : y.location.href,*/
             ec = l.location != l.parent.location ? fake_referrer : fake_location_href,
             kb = ec,
@@ -509,8 +510,8 @@
         StrEndsWith = function(a, c) {
             return -1 !== a.indexOf(c, a.length - c.length)
         };
-        StrEndsWith(Na, "coolmathgames.com") || "localhost" == Na || 1 || (l.location.href = "https://coolmathgames.com");
-        Ta() || 1 ||
+        StrEndsWith(Na, "coolmathgames.com") || "localhost" == Na || (l.location.href = "https://coolmathgames.com");
+        Ta() ||
             (l.location.href = "https://www.coolmathgames.com/0-powerline-io");
         Date.now || (Date.now = function() {
             return (new Date).getTime()
