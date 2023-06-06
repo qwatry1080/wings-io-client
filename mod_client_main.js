@@ -1,4 +1,4 @@
-(function(w, x, s) {
+(function() {
   var Zb, $b;
 
   function ac(b) {
@@ -6,7 +6,7 @@
     for (var e = 0; 5 >= e; e++) {
       var f = e,
         d = p.planes[f][b][7],
-        a = x.createElement("canvas"),
+        a = document.createElement("canvas"),
         c = a.getContext("2d"),
         g = p.frames.plane8;
       a.width = g.width;
@@ -16,9 +16,9 @@
       d.draw(c);
       d = a.toDataURL("image/png");
       a = void 0;
-      c = x.styleSheets.length;
+      c = document.styleSheets.length;
       for (g = 0; g < c; g++) {
-        var h = x.styleSheets[g];
+        var h = document.styleSheets[g];
         if (null == h.href) {
           a = h;
           break
@@ -27,23 +27,23 @@
       a.addRule ? a.addRule(".btn-decal" + (f + 1) + ":before", "background-image: url(" + d + ")") : a.insertRule(".btn-decal" + (f + 1) + ":before{background-image: url(" +
         d + ")}", a.cssRules.length)
     }
-    for (e = 0; 5 >= e; e++) s("#check" + e)
+    for (e = 0; 5 >= e; e++) jQuery("#check" + e)
       .hide();
-    s("#check" + b)
+    jQuery("#check" + b)
       .show()
   }
 
   function cc(b) {
     dc = b;
-    for (var e = 0; 5 >= e; e++) s("#checkD" + e)
+    for (var e = 0; 5 >= e; e++) jQuery("#checkD" + e)
       .hide();
-    s("#checkD" + b)
+    jQuery("#checkD" + b)
       .show()
   }
 
   function ec() {
     Aa = !1;
-    s("#beta")
+    jQuery("#beta")
       .show();
     Ab()
   }
@@ -58,36 +58,36 @@
   function gc() {
     var b = "Low";
     Ba && (b = "High");
-    var e = s("#graphicsID")[0];
+    var e = jQuery("#graphicsID")[0];
     e && (e.childNodes[0].data = "Graphics: " + b)
   }
 
   function hc() {
-    s("#pfArrow")
+    jQuery("#pfArrow")
       .show();
-    s("#pfText")
+    jQuery("#pfText")
       .show()
   }
 
   function ic() {
-    s("#copycheckimage")
+    jQuery("#copycheckimage")
       .hide();
-    s("#copyLink")
+    jQuery("#copyLink")
       .show();
-    s("#copyLinkBox")
+    jQuery("#copyLinkBox")
       .hide();
-    s("#overlay2")
+    jQuery("#overlay2")
       .fadeIn(200);
-    s("#pfArrow")
+    jQuery("#pfArrow")
       .hide();
-    s("#pfText")
+    jQuery("#pfText")
       .hide();
     setTimeout(function() {
-      s("#copycheckimage")
+      jQuery("#copycheckimage")
         .fadeIn(300)
     }, 200);
     setTimeout(function() {
-      s("#overlay2")
+      jQuery("#overlay2")
         .fadeOut(200)
     }, 1E3);
     fb = !1
@@ -96,8 +96,8 @@
   function jc() {
     var b = "images/sound_off.png";
     1 == O ? da = O = 0 : 0 == O && (O = 1, da = .05, b = "images/sound_on.png");
-    w.localStorage.muteVol = O;
-    s("#soundImg")[0].src = b
+    window.localStorage.muteVol = O;
+    jQuery("#soundImg")[0].src = b
   }
 
   function Bb() {
@@ -115,17 +115,17 @@
           kind: "banner"
         }
       }
-    }), w.googletag && (w.googletag.cmd.push(function() {
+    }), window.googletag && (window.googletag.cmd.push(function() {
       Cb && (Cb = !1, setTimeout(function() {
           Cb = !0
-        }, 6E4 * lc), w.googletag && w.googletag.pubads && w.googletag.pubads()
-        .refresh && w.googletag.pubads()
-        .refresh(w.ads))
+        }, 6E4 * lc), window.googletag && window.googletag.pubads && window.googletag.pubads()
+        .refresh && window.googletag.pubads()
+        .refresh(window.ads))
     }), kc++);
     else {
-      s("#mpu-top")
+      jQuery("#mpu-top")
         .show();
-      var b = s("#ldr-top");
+      var b = jQuery("#ldr-top");
       b && b.show();
       refreshSlots()
     }
@@ -137,7 +137,7 @@
 
   function Db() {
     da = 1 * O;
-    s("#overlay")
+    jQuery("#overlay")
       .hide();
     Y = !1
   }
@@ -148,20 +148,20 @@
         Eb) / 1E3);
       0 > b && (b = 0);
       var e = 10 - b;
-      0 > e ? (Aa = !1, Ab()) : (b = s("#countdownText")[0], e = x.createTextNode(e), b.replaceChild(e, b.firstChild), setTimeout(mc, 500))
+      0 > e ? (Aa = !1, Ab()) : (b = jQuery("#countdownText")[0], e = document.createTextNode(e), b.replaceChild(e, b.firstChild), setTimeout(mc, 500))
     }
   }
 
   function Lc() {
     Bb();
-    0 < nc && (s("#continueTop")
-      .show(), s("#continueBR")
-      .show(), s("#continue")
-      .show(), s("#nickInput")
-      .hide(), s("#skinPanel")
-      .hide(), s("#howto")
+    0 < nc && (jQuery("#continueTop")
+      .show(), jQuery("#continueBR")
+      .show(), jQuery("#continue")
+      .show(), jQuery("#nickInput")
+      .hide(), jQuery("#skinPanel")
+      .hide(), jQuery("#howto")
       .hide(), Aa = !0, Eb = +new Date, mc());
-    s("#overlay")
+    jQuery("#overlay")
       .fadeIn(500);
     da = .05 * O;
     F.clearBonusDisplay()
@@ -175,12 +175,12 @@
       hc();
       if (0 <= b) {
         Aa = !0;
-        s("#beta")
+        jQuery("#beta")
           .hide();
         var e =
-          s("#curScore")[0],
+          jQuery("#curScore")[0],
           f;
-        f = u.isInstagib() ? x.createTextNode("Kills: " + b) : x.createTextNode("Current Score: " + b);
+        f = u.isInstagib() ? document.createTextNode("Kills: " + b) : document.createTextNode("Current Score: " + b);
         e.replaceChild(f, e.firstChild)
       }
       nc = b;
@@ -189,23 +189,23 @@
   }
 
   function Ab() {
-    s("#continueTop")
+    jQuery("#continueTop")
       .hide();
-    s("#continueBR")
+    jQuery("#continueBR")
       .hide();
-    s("#continue")
+    jQuery("#continue")
       .hide();
-    s("#nickInput")
+    jQuery("#nickInput")
       .show();
-    s("#skinPanel")
+    jQuery("#skinPanel")
       .hide();
-    s("#divOff")
+    jQuery("#divOff")
       .show();
-    s("#divOn")
+    jQuery("#divOn")
       .hide();
-    s("#howto")
+    jQuery("#howto")
       .show();
-    s("#beta")
+    jQuery("#beta")
       .show();
     Eb = +new Date
   }
@@ -213,12 +213,12 @@
   function Ua() {
     Gb = Object.keys(B)
       .length;
-    x.title = "Wings!"
+    document.title = "Wings!"
   }
 
   function Hb() {
     try {
-      return w.self !== w.top
+      return window.self !== window.top
     } catch (b) {
       return !0
     }
@@ -314,9 +314,9 @@
       y: b
     }
   }
-  w.location.href.split("/");
-  var Ib = "https:" == w.location.protocol,
-    G = w.location.pathname.indexOf("mobile"); - 1 == G && (G = 0);
+  window.location.href.split("/");
+  var Ib = "https:" == window.location.protocol,
+    G = window.location.pathname.indexOf("mobile"); - 1 == G && (G = 0);
   var Jb = 1E3 / 30 * 3,
     Mc = [{
       r: 255,
@@ -372,7 +372,7 @@
     Aa = !1,
     Eb, nc = 0,
     da = 1,
-    O = w.localStorage.muteVol,
+    O = window.localStorage.muteVol,
     tc = 3,
     uc = 750,
     vc = 5,
@@ -412,25 +412,25 @@
     u, sa, $a = {},
     fb = !1;
   (function() {
-    var b = w.location.search;
+    var b = window.location.search;
     "?" == b.charAt(0) && (b = b.slice(1));
     for (var b = b.split("&"), e = 0; e < b.length; e++) {
       var f = b[e].split("=");
       $a[f[0]] = f[1]
     }
   })();
-  "true" == w.localStorage.lq && (Ba = !1);
+  "true" == window.localStorage.lq && (Ba = !1);
   var vb = null,
     Bc = function() {
       var b = "";
       Ib && (b = "s");
-      s.get("http" + b + "://ip2l.wings.io/cc", function(b) {
+      jQuery.get("http" + b + "://ip2l.wings.io/cc", function(b) {
         vb = b.substring(0, 2);
-        w.localStorage.wingsCC = vb;
-        w.localStorage.wingsCCTime = +new Date
+        window.localStorage.wingsCC = vb;
+        window.localStorage.wingsCCTime = +new Date
       }, "text")
     };
-  void 0 == w.localStorage.wingsCCTime || void 0 != w.localStorage.wingsCC && 2 != w.localStorage.wingsCC.length ? Bc() : 288E5 < +new Date - w.localStorage.wingsCCTime ? Bc() : vb = w.localStorage.wingsCC;
+  void 0 == window.localStorage.wingsCCTime || void 0 != window.localStorage.wingsCC && 2 != window.localStorage.wingsCC.length ? Bc() : 288E5 < +new Date - window.localStorage.wingsCCTime ? Bc() : vb = window.localStorage.wingsCC;
   var Rb = function() {
     R = +new Date;
     var b = 0;
@@ -438,38 +438,38 @@
     Mb = R;
     M.update(b);
     M.draw(b);
-    w.requestAnimationFrame && w.requestAnimationFrame(Rb);
+    window.requestAnimationFrame && window.requestAnimationFrame(Rb);
     Lb && (Lb = !1)
   };
-  x.body.onselectstart = function() {
+  document.body.onselectstart = function() {
     return !1
   };
-  w.switchSkins = function() {
+  window.switchSkins = function() {
     ec();
-    Ob ? (s("#howto")
-      .show(), s("#skinPanel")
-      .hide(), s("#divOff")
-      .show(), s("#divOn")
-      .hide()) : (s("#howto")
-      .hide(), s("#skinPanel")
-      .show(), s("#divOff")
-      .hide(), s("#divOn")
+    Ob ? (jQuery("#howto")
+      .show(), jQuery("#skinPanel")
+      .hide(), jQuery("#divOff")
+      .show(), jQuery("#divOn")
+      .hide()) : (jQuery("#howto")
+      .hide(), jQuery("#skinPanel")
+      .show(), jQuery("#divOff")
+      .hide(), jQuery("#divOn")
       .show());
     Ob = !Ob
   };
-  w.setSkinColor = function(b) {
+  window.setSkinColor = function(b) {
     ac(b)
   };
-  w.setDecal = function(b) {
+  window.setDecal = function(b) {
     cc(b)
   };
-  w.clickPlay = function(b) {
-    Z ? Db() : (w.localStorage.nick =
-      b, x.getElementsByTagName("canvas")[0].style.cursor = "url(images/crosshair.png) 16 16, auto", kb++, U.mouseMoved = !1, A.sendNick(b, Aa), Aa && (Ab(), Aa = !1), u.isSpaceWars() ? F.showTip("Hint: Earn points faster by destroying asteroids.") : x.fullscreenElement || x.mozFullScreenElement || x.webkitFullscreenElement || x.msFullscreenElement || 2 != kb && 4 != kb && 6 != kb || F.showTip("Press 'F' to toggle Fullscreen"))
+  window.clickPlay = function(b) {
+    Z ? Db() : (window.localStorage.nick =
+      b, document.getElementsByTagName("canvas")[0].style.cursor = "url(images/crosshair.png) 16 16, auto", kb++, U.mouseMoved = !1, A.sendNick(b, Aa), Aa && (Ab(), Aa = !1), u.isSpaceWars() ? F.showTip("Hint: Earn points faster by destroying asteroids.") : document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement || 2 != kb && 4 != kb && 6 != kb || F.showTip("Press 'F' to toggle Fullscreen"))
   };
-  w.setSpectate = function(b) {
+  window.setSpectate = function(b) {
     xa = !0;
-    x.getElementsByTagName("canvas")[0].style.cursor = "default";
+    document.getElementsByTagName("canvas")[0].style.cursor = "default";
     Db();
     zc++;
     ec();
@@ -478,30 +478,30 @@
     ka = 0;
     zc % 2 || 1 >= Gb ? F.showTip("Press 'ESC' to go back") : F.showTip("Click to follow next player")
   };
-  w.setContinue = function() {
-    s("#topGui")
+  window.setContinue = function() {
+    jQuery("#topGui")
       .show();
-    s("#roomFailed")
+    jQuery("#roomFailed")
       .hide();
     Hb() || (parent.location.hash = "");
     A.getServerAndConnect()
   };
-  w.toggleGraphics = function() {
+  window.toggleGraphics = function() {
     Ba = !Ba;
     M.resize();
-    w.localStorage.lq = !Ba;
+    window.localStorage.lq = !Ba;
     gc()
   };
-  w.copyRoomLink = function() {
-    s("#copyLink")
+  window.copyRoomLink = function() {
+    jQuery("#copyLink")
       .hide();
-    s("#copyLinkBox")
+    jQuery("#copyLinkBox")
       .show();
-    var b = s("#roomlinkInput")[0];
+    var b = jQuery("#roomlinkInput")[0];
     b.value = "http://classic.wings.io/#" + A.roomID;
     fb = !0;
     fc() &&
-      (s("#copyButton")[0].childNodes[0].data = "Close", s("#safariTooltip")
+      (jQuery("#copyButton")[0].childNodes[0].data = "Close", jQuery("#safariTooltip")
         .show());
     setTimeout(function() {
       b.setSelectionRange(0, b.value.length);
@@ -509,90 +509,90 @@
       b.focus()
     }, 100)
   };
-  w.setCopy = function() {
-    var b = s("#roomlinkInput")[0];
+  window.setCopy = function() {
+    var b = jQuery("#roomlinkInput")[0];
     b.value = "http://wings.io/#" + A.roomID;
     b.setSelectionRange(0, b.value.length);
     b.select();
     b.focus();
-    if (fc()) s("#copyLinkBox")
-      .hide(), s("#copyLink")
+    if (fc()) jQuery("#copyLinkBox")
+      .hide(), jQuery("#copyLink")
       .show(), fb = !1;
     else {
       try {
-        x.execCommand("copy")
+        document.execCommand("copy")
       } catch (e) {}
       ic()
     }
   };
   null != adsense && adsense && Bb();
-  w.clickNoNames = function(b) {
+  window.clickNoNames = function(b) {
     lb = !lb;
     b.checked = lb
   };
-  w.toggleMute =
+  window.toggleMute =
     function() {
       jc()
     };
   void 0 == O && (O = 1);
-  var Cc = w.navigator.userAgent,
+  var Cc = window.navigator.userAgent,
     Dc = -1 < Cc.indexOf("MSIE ") || -1 < Cc.indexOf("Trident/");
-  "undefined" === typeof w.orientation || G || (w.location.href = "https://itunes.apple.com/us/app/wings.io/id1098205567?l=pt&ls=1&mt=8");
+  "undefined" === typeof window.orientation || G || (window.location.href = "https://itunes.apple.com/us/app/wings.io/id1098205567?l=pt&ls=1&mt=8");
   if (0 == O || Dc) O = 1, G || jc();
-  Dc && s("#sndIcon")
+  Dc && jQuery("#sndIcon")
     .hide();
   var wb;
-  w.onblur = function() {
+  window.onblur = function() {
     wb = setTimeout(Kc, 3E5);
     wa = !1;
     da = 0;
     L && (L.sound.volume(0), L.sound.volume(0, mb), L.sound.volume(0, ia), L.sound.volume(0, na), nb && L.sound.volume(0, nb))
   };
-  w.onfocus = function() {
+  window.onfocus = function() {
     wb && (clearTimeout(wb),
       wb = null);
     Lb = wa = !0;
     da = 1 * O;
     for (var b in B) B[b].clearTrail()
   };
-  w.connectToServer = function(b) {
+  window.connectToServer = function(b) {
     A.roomNumber = 0;
     A.remoteHost = b;
     A.connect();
     console.log("CONNECTING NOW to " + b)
   };
-  w.disconnect = function() {
+  window.disconnect = function() {
     A.disconnect();
     console.log("Disconnected.")
   };
-  w.enterGame = function(b) {
+  window.enterGame = function(b) {
     clickPlay(b);
     onfocus()
   };
   var Sb = !1;
-  w.setInput = function(b, e, f) {
+  window.setInput = function(b, e, f) {
     U.angle = b;
     U.hover = e;
     !Sb && f ? A.sendShooting(f) : Sb && !f && A.sendShooting(f);
     Sb = f
   };
-  w.wasKilled = function(b) {
+  window.wasKilled = function(b) {
     U.angle = Math.PI;
     U.hover = 1;
     G && (Aa = !0, b = {
         score: b
       }, "undefined" != typeof messageHandlers &&
-      messageHandlers.wasKilled ? messageHandlers.wasKilled(JSON.stringify(b)) : w.webkit.messageHandlers.wasKilled.postMessage(b))
+      messageHandlers.wasKilled ? messageHandlers.wasKilled(JSON.stringify(b)) : window.webkit.messageHandlers.wasKilled.postMessage(b))
   };
-  w.connectionClosed = function() {
+  window.connectionClosed = function() {
     console.log("Connection was closed");
     U.angle = Math.PI;
     U.hover = 1;
-    G && ("undefined" != typeof messageHandlers && messageHandlers.connectionClosed ? messageHandlers.connectionClosed(JSON.stringify({})) : w.webkit.messageHandlers.connectionClosed.postMessage({}))
+    G && ("undefined" != typeof messageHandlers && messageHandlers.connectionClosed ? messageHandlers.connectionClosed(JSON.stringify({})) : window.webkit.messageHandlers.connectionClosed.postMessage({}))
   };
-  if (G) w.onblur();
-  w.localStorage.nick && (s("#nick")[0].value = w.localStorage.nick);
-  x.oncontextmenu = function() {
+  if (G) window.onblur();
+  window.localStorage.nick && (jQuery("#nick")[0].value = window.localStorage.nick);
+  document.oncontextmenu = function() {
     return !1
   };
   var Nc = function() {
@@ -611,17 +611,17 @@
       this.warshipsEscaped = this.warshipsDestroyed = 0;
       this.setType = function(b) {
         this.type = b;
-        this.isSpaceWars() ? (s("#pfText")
+        this.isSpaceWars() ? (jQuery("#pfText")
           .css({
             "-webkit-filter": "brightness(100%)"
-          }), s("#pfArrow")
+          }), jQuery("#pfArrow")
           .css({
             "-webkit-filter": "brightness(100%)"
-          })) : (s("#pfText")
+          })) : (jQuery("#pfText")
           .css({
             "-webkit-filter": "brightness(0%)"
           }),
-          s("#pfArrow")
+          jQuery("#pfArrow")
           .css({
             "-webkit-filter": "brightness(0%)"
           }));
@@ -708,7 +708,7 @@
       b != this._frameOpacity && (this._frameOpacity = b, this._dirty = !0)
     },
     render: function() {
-      null == this._canvas && (this._canvas = x.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
+      null == this._canvas && (this._canvas = document.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
       if (this._dirty) {
         this._dirty = !1;
         var b = this._canvas,
@@ -791,7 +791,7 @@
       this._angY = Math.cos(b) * this._d
     },
     render: function() {
-      null == this._canvas && (this._canvas = x.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
+      null == this._canvas && (this._canvas = document.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
       if (this._dirty) {
         this._dirty = !1;
         var b = this._canvas,
@@ -925,7 +925,7 @@
         frameIconR = p.frames.killR;
         var c = a.generateRGBKs();
         f = a.generateTintImage(c, b, e, f);
-        b = x.createElement("canvas");
+        b = document.createElement("canvas");
         b.width = f.width;
         b.height = f.height;
         e = b.getContext("2d");
@@ -941,7 +941,7 @@
           e = 0,
           e = this.generateTintedKillIcon(205, 154, 109, "#FFFFFF"),
           f = this.generateTintedKillIcon(172, 121, 76, "#BBBBBB"),
-          d = x.createElement("canvas");
+          d = document.createElement("canvas");
         d.width = e.width;
         d.height = e.height +
           b;
@@ -956,7 +956,7 @@
           d = .9,
           c = this.generateTintedKillIcon(167, 176, 185, "#FFFFFF"),
           f = this.generateTintedKillIcon(129, 138, 148, "#BBBBBB"),
-          g = x.createElement("canvas");
+          g = document.createElement("canvas");
         g.width = c.width + e;
         g.height = c.height + b;
         var h = g.getContext("2d"),
@@ -979,7 +979,7 @@
         c = this.generateTintedKillIcon(240, 164, 0, "#FFFFFF");
         f = this.generateTintedKillIcon(200, 124, 0, "#ddaf63");
         b = this.generateTintedKillIcon(158, 98, 0, "#b25c5c");
-        g = x.createElement("canvas");
+        g = document.createElement("canvas");
         g.width = c.width + shift2X;
         g.height = c.height + 1.5 * shift2Y;
         a = g.width / 2 - c.width / 2 * d;
@@ -1006,7 +1006,7 @@
         c = this.generateTintedKillIcon(222, 0, 0, "#FFFFFF");
         f = this.generateTintedKillIcon(172, 0, 0, "#d68080");
         b = this.generateTintedKillIcon(133, 0, 0, "#b25c5c");
-        g = x.createElement("canvas");
+        g = document.createElement("canvas");
         g.width = c.width + shift2X;
         g.height = c.height + 1.5 * shift2Y;
         a = g.width / 2 - c.width / 2 * .65;
@@ -1040,13 +1040,13 @@
         this.loadGameSpritesheet()
       };
       this.loadTintImage = function(b, e, f) {
-        var d = x.createElement("canvas"),
+        var d = document.createElement("canvas"),
           a = d.getContext("2d"),
           c = b.width,
           g = b.height;
         d.width = c;
         d.height = g;
-        var h = x.createElement("canvas");
+        var h = document.createElement("canvas");
         h.width = c;
         h.height = g;
         c = h.getContext("2d");
@@ -1103,9 +1103,9 @@
         67 == a.keyCode && Y && fb ? setTimeout(function() {
           ic()
         }, 10) : Y || (32 == a.keyCode ? Z && A.sendShooting(!0) : 188 != a.keyCode && 49 != a.keyCode && (222 == a.keyCode ? Pb = !Pb : 51 == a.keyCode ? (tb = !tb, console.log("Toggled Gradient to " + tb)) : 52 == a.keyCode ? (ob = !ob, console.log("Toggled drawClouds to " + ob)) : 53 == a.keyCode ? (Na = !Na, console.log("Toggled drawWater to " + Na)) : 54 == a.keyCode ? (pb = !pb, console.log("Toggled drawExplosions to " +
-          pb)) : 55 == a.keyCode ? (qb = !qb, console.log("Toggled drawSun to " + qb)) : 56 == a.keyCode ? (rb = !rb, console.log("Toggled drawItems to " + rb)) : 57 == a.keyCode ? (Ya = !Ya, console.log("Toggled drawTrails to " + Ya)) : 48 == a.keyCode ? (sb = !sb, console.log("Toggled drawSplashes to " + sb)) : 27 == a.keyCode ? (Bb(), da = .05 * O, s("#overlay")
-          .show(), hc(), Y = !0, Z || (ka = 1, v = null)) : 70 == a.keyCode && (x.fullscreenElement || x.mozFullScreenElement || x.webkitFullscreenElement || x.msFullscreenElement ? x.exitFullscreen ? x.exitFullscreen() : x.msExitFullscreen ?
-          x.msExitFullscreen() : x.mozCancelFullScreen ? x.mozCancelFullScreen() : x.webkitExitFullscreen && x.webkitExitFullscreen() : x.documentElement.requestFullscreen ? x.documentElement.requestFullscreen() : x.documentElement.msRequestFullscreen ? x.documentElement.msRequestFullscreen() : x.documentElement.mozRequestFullScreen ? x.documentElement.mozRequestFullScreen() : x.documentElement.webkitRequestFullscreen && x.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT), F.clearTip())))
+          pb)) : 55 == a.keyCode ? (qb = !qb, console.log("Toggled drawSun to " + qb)) : 56 == a.keyCode ? (rb = !rb, console.log("Toggled drawItems to " + rb)) : 57 == a.keyCode ? (Ya = !Ya, console.log("Toggled drawTrails to " + Ya)) : 48 == a.keyCode ? (sb = !sb, console.log("Toggled drawSplashes to " + sb)) : 27 == a.keyCode ? (Bb(), da = .05 * O, jQuery("#overlay")
+          .show(), hc(), Y = !0, Z || (ka = 1, v = null)) : 70 == a.keyCode && (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement ? document.exitFullscreen ? document.exitFullscreen() : document.msExitFullscreen ?
+          document.msExitFullscreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitExitFullscreen && document.webkitExitFullscreen() : document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.msRequestFullscreen ? document.documentElement.msRequestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.webkitRequestFullscreen && document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT), F.clearTip())))
       };
       b.keyup = function(a) {
         Y ||
@@ -1132,11 +1132,11 @@
         }
       };
       this.addListeners = function() {
-        x.addEventListener("mousedown", b.mousedown, !1);
-        x.addEventListener("mousemove", b.mousemove, !1);
-        x.addEventListener("mouseup", b.mouseup, !1);
-        x.addEventListener("keydown", b.keydown, !1);
-        x.addEventListener("keyup", b.keyup, !1)
+        document.addEventListener("mousedown", b.mousedown, !1);
+        document.addEventListener("mousemove", b.mousemove, !1);
+        document.addEventListener("mouseup", b.mouseup, !1);
+        document.addEventListener("keydown", b.keydown, !1);
+        document.addEventListener("keyup", b.keyup, !1)
       }
     },
     Rc = function() {
@@ -1314,7 +1314,7 @@
         la, ma, ya, sa;
       this.draw = function(I) {
         if (ta) {
-          C = x.createElement("canvas");
+          C = document.createElement("canvas");
           var r = C.getContext("2d");
           this.renderLeaderboard(r, C)
         }
@@ -1415,7 +1415,7 @@
         a.restore()
       };
       this.DrawRank = function(a) {
-        0 < v.rank && (void 0 == rankCanvas && (rankCanvas = x.createElement("canvas"), rankCanvas.width = 200, rankCanvas.height = 200, rankCanvasContext = rankCanvas.getContext("2d")), lastRankNumber != v.rank && (rankCanvasContext.clearRect(0, 0, 200, 200), rankCanvasContext.globalAlpha = .3, rankCanvasContext.fillStyle = "rgba(0,0,0,1.0)", Ea(rankCanvasContext, 0, 0, 200, 200, 30 * t), ca = new Da(15 * t, "#EEEEEE"), ca.setValue(v.rank), ca.setUsingRoundedFrame(!1),
+        0 < v.rank && (void 0 == rankCanvas && (rankCanvas = document.createElement("canvas"), rankCanvas.width = 200, rankCanvas.height = 200, rankCanvasContext = rankCanvas.getContext("2d")), lastRankNumber != v.rank && (rankCanvasContext.clearRect(0, 0, 200, 200), rankCanvasContext.globalAlpha = .3, rankCanvasContext.fillStyle = "rgba(0,0,0,1.0)", Ea(rankCanvasContext, 0, 0, 200, 200, 30 * t), ca = new Da(15 * t, "#EEEEEE"), ca.setValue(v.rank), ca.setUsingRoundedFrame(!1),
           fa = ca.render(), lastRankNumber = v.rank), a.drawImage(rankCanvas, Ka - 200, Wa - 200))
       };
       this.DrawScore = function(a) {
@@ -1431,7 +1431,7 @@
             n = Ka - b - 5,
             f = V + 5 + 5;
           G && (h = 60 * t, g = b);
-          void 0 == r && (r = x.createElement("canvas"), J = r.getContext("2d"));
+          void 0 == r && (r = document.createElement("canvas"), J = r.getContext("2d"));
           if (-1 != v.score)
             for (r.width = g, r.height = h, J.font = c + "px 'proxima-nova-1','proxima-nova-2', " + d, J.globalAlpha = .3, J.textBaseline = "hanging", Ea(J, 0, 0, b, h, 30 * t), J.globalAlpha = 1, c = 2; 0 <= c; c--) d = 0, 0 != c ? (J.fillStyle =
                 "rgba(100,49,0,1.0)", d = c) : J.fillStyle = "rgba(255,156,0,1.0)", J.fillText(v.rank + ". You ", e, k + d), g = J.measureText(v.score)
@@ -2530,7 +2530,7 @@
             q = -d[h][0] + d[h][2],
             n = -d[h][1] + d[h][3],
             k;
-          k = x.createElement("canvas");
+          k = document.createElement("canvas");
           var m = k.getContext("2d"),
             l = c = 1,
             y = 3,
@@ -3024,13 +3024,13 @@
           else {
             var c = "";
             Ib && (c = "s");
-            s.ajax({
+            jQuery.ajax({
               url: "http" + c + "://master.wings.io/",
               type: "POST",
               success: function(a) {
-                if ("0" == a) s("#topGui")
-                  .hide(), s("#topGuiConnecting")
-                  .hide(), s("#roomFailed")
+                if ("0" == a) jQuery("#topGui")
+                  .hide(), jQuery("#topGuiConnecting")
+                  .hide(), jQuery("#roomFailed")
                   .show();
                 else {
                   a = a.split("!");
@@ -3081,7 +3081,7 @@
         } else setTimeout(A.getServerAndConnect, 100)
       };
       this.disconnect = function() {
-        A.directed && (Hb() || (w.location.hash = ""), A.directed = !1);
+        A.directed && (Hb() || (window.location.hash = ""), A.directed = !1);
         A.roomID = 0;
         f && f.close()
       };
@@ -3104,17 +3104,17 @@
         G ? A.sendSingleByte(32) : A.sendSingleByte(1);
         A.ping();
         A.sentHello = !0;
-        s("#copyLink")
+        jQuery("#copyLink")
           .fadeIn(300);
-        s("#topGui")
+        jQuery("#topGui")
           .show();
-        s("#topGuiConnecting")
+        jQuery("#topGuiConnecting")
           .hide();
-        s(".btn-needs-server")
+        jQuery(".btn-needs-server")
           .removeAttr("disabled");
-        s("#nick")
+        jQuery("#nick")
           .focus();
-        1 == G && ("undefined" != typeof messageHandlers && messageHandlers.didConnect ? messageHandlers.didConnect(JSON.stringify({})) : w.webkit.messageHandlers.didConnect.postMessage({}))
+        1 == G && ("undefined" != typeof messageHandlers && messageHandlers.didConnect ? messageHandlers.didConnect(JSON.stringify({})) : window.webkit.messageHandlers.didConnect.postMessage({}))
       };
       this.processMessage = function(d) {
         d = new DataView(d);
@@ -3156,7 +3156,7 @@
             wc = r;
             xc = d
           } else if (161 == a || 171 == a) xa = !0, G && ("undefined" != typeof messageHandlers && messageHandlers.didEnterGame ? messageHandlers.didEnterGame(JSON.stringify({})) :
-          w.webkit.messageHandlers.didEnterGame.postMessage({})), c = 1, f = d.getUint32(c, !0), c += 4, h = d.getFloat32(c, !0), c += 4, q = -d.getFloat32(c, !0), c += 4, n = d.getFloat32(c, !0), c += 4, k = d.getUint8(c, !0), c += 1, m = d.getUint8(c, !0), c += 1, d = d.getUint32(c, !0), v = new Xb, v.id = f, v.setColorID(k), v.setDecalID(m), v.setName(myName), v.setFlagInfo(d), v.setPose(h, q, n), v.updateBool = A.lastUpdateBool, B[f] = v, ra = f, Z = !0, Db(), Ua(), 161 == a && (Za[f] = 0);
+          window.webkit.messageHandlers.didEnterGame.postMessage({})), c = 1, f = d.getUint32(c, !0), c += 4, h = d.getFloat32(c, !0), c += 4, q = -d.getFloat32(c, !0), c += 4, n = d.getFloat32(c, !0), c += 4, k = d.getUint8(c, !0), c += 1, m = d.getUint8(c, !0), c += 1, d = d.getUint32(c, !0), v = new Xb, v.id = f, v.setColorID(k), v.setDecalID(m), v.setName(myName), v.setFlagInfo(d), v.setPose(h, q, n), v.updateBool = A.lastUpdateBool, B[f] = v, ra = f, Z = !0, Db(), Ua(), 161 == a && (Za[f] = 0);
         else if (162 == a || 178 == a) b(d, a, !1), this.firstClientListing = !1, Ua();
         else if (169 == a || 172 == a) b(d, a, !1),
           Ua();
@@ -3292,13 +3292,13 @@
         A.firstClientListing = !0;
         connectionClosed();
         Fb(-1);
-        s("#topGui")
+        jQuery("#topGui")
           .hide();
-        s("#topGuiConnecting")
+        jQuery("#topGuiConnecting")
           .show();
-        s("#copyLink")
+        jQuery("#copyLink")
           .fadeOut(300);
-        s(".btn-needs-server")
+        jQuery(".btn-needs-server")
           .attr("disabled", "disabled");
         var b = this.connectRetry;
         5 < b && (b = 5);
@@ -3608,42 +3608,42 @@
       var C = function() {
         var a = 2;
         Ba && (a = 1);
-        d.width = w.innerWidth / a;
-        d.height = w.innerHeight / a;
+        d.width = window.innerWidth / a;
+        d.height = window.innerHeight / a;
         Ka = d.width;
         Wa = d.height;
         var b = Wa * a,
           c = -50 + 50 * a + "%",
           a = "translate(" + c + "," + c + ") scale(" + a + ")";
-        s("#canvas")
+        jQuery("#canvas")
           .css({
             transform: a
           });
-        s("#canvas")
+        jQuery("#canvas")
           .css({
             "-ms-transform": a
           });
-        s("#canvas")
+        jQuery("#canvas")
           .css({
             "-webkit-transform": a
           });
         t = .92 * Math.max(Wa / 916, Ka / 1500);
-        t *= w.devicePixelRatio / jb;
+        t *= window.devicePixelRatio / jb;
         var e = Math.min(1, b / 916),
           a = 640 * e,
           c = (Wa - 916) / 2;
         0 > c && (c = 0);
-        0 < a && (e = "translate(-50%,0%) scale(" + e + ")", s("#mainDialog")
+        0 < a && (e = "translate(-50%,0%) scale(" + e + ")", jQuery("#mainDialog")
           .css({
             transform: e
-          }), s("#mainDialog")
+          }), jQuery("#mainDialog")
           .css({
             "-ms-transform": e
           }),
-          s("#mainDialog")
+          jQuery("#mainDialog")
           .css({
             "-webkit-transform": e
-          }), b = b / 2 - .52 * a + c, s("#mainDialog")
+          }), b = b / 2 - .52 * a + c, jQuery("#mainDialog")
           .css({
             top: b + "px"
           }))
@@ -3661,7 +3661,7 @@
       p = new Oc;
       p.load(function() {
         console.log("Resources loaded!");
-        1 == G && ("undefined" != typeof messageHandlers && messageHandlers.didLoad ? messageHandlers.didLoad(JSON.stringify({})) : w.webkit.messageHandlers.didLoad.postMessage({}));
+        1 == G && ("undefined" != typeof messageHandlers && messageHandlers.didLoad ? messageHandlers.didLoad(JSON.stringify({})) : window.webkit.messageHandlers.didLoad.postMessage({}));
         F = new Vc;
         oa = new Rc;
         A.hasConnection && !A.sentHello &&
@@ -3720,7 +3720,7 @@
       this.update = function(b) {
         var c = a.maxZoom + (a.minZoom - a.maxZoom);
         xa || (a.y = 470);
-        Z || 1 != ka || Y ? (a.zoom = 1 / (w.devicePixelRatio / jb) * 1.2, a.zoom *= t, G && (a.zoom += .3), null != v && (ca.x = v.x - a.x, ca.y = v.y - a.y, a.x = v.x, a.y = v.y)) : (c = 1 / (w.devicePixelRatio / jb) * .7 * t, a.zoom += (c - a.zoom) / 10);
+        Z || 1 != ka || Y ? (a.zoom = 1 / (window.devicePixelRatio / jb) * 1.2, a.zoom *= t, G && (a.zoom += .3), null != v && (ca.x = v.x - a.x, ca.y = v.y - a.y, a.x = v.x, a.y = v.y)) : (c = 1 / (window.devicePixelRatio / jb) * .7 * t, a.zoom += (c - a.zoom) / 10);
         this.applyShake(b)
       };
       this.setPosition = function(b, c) {
@@ -3795,11 +3795,11 @@
           this.width, this.height, c + this.x, g + this.y, this.width, this.height)
       };
       this.renderTintedFrame = function(d) {
-        var f = x.createElement("canvas"),
+        var f = document.createElement("canvas"),
           n = f.getContext("2d");
         f.width = this.width;
         f.height = this.height;
-        var k = x.createElement("canvas");
+        var k = document.createElement("canvas");
         k.width = this.width;
         k.height = this.height;
         var m = k.getContext("2d");
@@ -3815,7 +3815,7 @@
         return d
       };
       this.getImageCopy = function() {
-        var c = x.createElement("canvas");
+        var c = document.createElement("canvas");
         c.width = this.width;
         c.height = this.height;
         var d = c.getContext("2d");
@@ -3829,7 +3829,7 @@
         }
       };
       this.generateTintImage2 = function(d, f, n, k) {
-        var m = x.createElement("canvas");
+        var m = document.createElement("canvas");
         m.width = this.width;
         m.height = this.height;
         var l = m.getContext("2d");
@@ -3841,7 +3841,7 @@
         return d
       };
       this.generateTintImage = function(a, b, d, e) {
-        var f = x.createElement("canvas");
+        var f = document.createElement("canvas");
         f.width = this.width;
         f.height = this.height;
         var l = f.getContext("2d");
@@ -3859,11 +3859,11 @@
       };
       this.generateRGBKs = function() {
         var c = [],
-          d = x.createElement("canvas");
+          d = document.createElement("canvas");
         d.getContext("2d");
         d.width = this.width;
         d.height = this.height;
-        d = x.createElement("canvas");
+        d = document.createElement("canvas");
         d.width = this.width;
         d.height = this.height;
         d = d.getContext("2d");
@@ -3891,11 +3891,11 @@
         return c
       };
       this.renderToCanvas = function() {
-        var c = x.createElement("canvas"),
+        var c = document.createElement("canvas"),
           d = c.getContext("2d");
         c.width = this.width;
         c.height = this.height;
-        var f = x.createElement("canvas");
+        var f = document.createElement("canvas");
         f.width = this.width;
         f.height = this.height;
         f.getContext("2d");
@@ -5048,7 +5048,7 @@
         }
       };
       this.loadWarshipCanvas = function() {
-        var a = x.createElement("canvas"),
+        var a = document.createElement("canvas"),
           b = a.getContext("2d"),
           d = p.warshipImage.height;
         a.width = p.warshipImage.width;
@@ -5175,8 +5175,8 @@
           this.inGame = !1
         }
     };
-  w.onload = function() {
-    Modernizr.canvas && Modernizr.websockets && (null == M && (w.devicePixelRatio && (jb = 1 < w.devicePixelRatio ? 2 : 1), u = new Nc, M = new Cd(x.getElementById("canvas")), w.addEventListener("resize", M.resize, !1), U = new Pc, U.addListeners(), w.requestAnimationFrame ? w.requestAnimationFrame(Rb) : setInterval(Rb, 1E3 / 60), s("#overlay")
+  window.onload = function() {
+    Modernizr.canvas && Modernizr.websockets && (null == M && (window.devicePixelRatio && (jb = 1 < window.devicePixelRatio ? 2 : 1), u = new Nc, M = new Cd(document.getElementById("canvas")), window.addEventListener("resize", M.resize, !1), U = new Pc, U.addListeners(), window.requestAnimationFrame ? window.requestAnimationFrame(Rb) : setInterval(Rb, 1E3 / 60), jQuery("#overlay")
       .show()), M.resize(), gc())
   }
-})(window, document, jQuery);
+})();
