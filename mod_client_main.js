@@ -1,4 +1,5 @@
 (function() {
+  console.log("Hosted Script Ran!");
   var Zb, $b;
 
   function ac(b) {
@@ -2971,6 +2972,7 @@
             C.setFlagInfo(V);
             C.setWeapon(x);
             C.ammo = P
+            window.allPlanes = B;
           }
           if (null == C) console.log("ERROR: Receiving data for a player (" + k + ") that does not exist, ignoring!");
           else if (C.id = k, C.lastUpdate = R, C.updateBool = A.lastUpdateBool, y && (C.setPose(m, t, u), C.energy = w, C.setEnergy(w), C.hover = r, C.setIsBot(p), C.setIsShooting(s)), 169 == a || 172 == a || 162 == a || 178 == a) C.setScore(ea), c || (1 == f && (sc = k), ja.push(k), e = !0, C.setRank(f), f++)
