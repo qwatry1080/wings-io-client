@@ -279,7 +279,9 @@
     <script src="lib/Stats.js"></script>
     <script src="lib/howler.min.js"></script>
     <script>
-    (function(l, y, h) {
+    (function(window, document, jQuery) {
+        var fake_window_location = "https://powerline.coolmathgames.com";
+        var fake_window_parent_location = "https://www.coolmathgames.com/0-powerline-io"
         function db() {
             return 11 == (new Date).getMonth()
         }
@@ -287,7 +289,7 @@
         function Ta() {
             try {
                 return true;
-                return l.self !== l.top
+                return window.self !== window.top
             } catch (a) {
                 return !0
             }
@@ -307,33 +309,33 @@
         function Kc() {
             Ja = 3;
             Wb(Ja);
-            h("#countdown").show();
+            jQuery("#countdown").show();
             Xb = setInterval(function() {
                 Wb(Ja)
             }, 1E3)
         }
 
         function Wb(a) {
-            h("#countdown")[0].innerHTML = Ja;
-            0 == Ja && (h("#countdown").hide(), clearInterval(Xb),
+            jQuery("#countdown")[0].innerHTML = Ja;
+            0 == Ja && (jQuery("#countdown").hide(), clearInterval(Xb),
                 n.sendNick(Yb));
-            h("#countdown")[0].classList.remove("nums");
-            void h("#countdown")[0].offsetWidth;
-            h("#countdown")[0].classList.add("nums");
+            jQuery("#countdown")[0].classList.remove("nums");
+            void jQuery("#countdown")[0].offsetWidth;
+            jQuery("#countdown")[0].classList.add("nums");
             Ja--
         }
 
         function Zb() {
-            h("#copycheckimage").hide();
-            h("#copyLink").show();
-            h("#copyLinkBox").hide();
-            h("#overlay2").fadeIn(200);
+            jQuery("#copycheckimage").hide();
+            jQuery("#copyLink").show();
+            jQuery("#copyLinkBox").hide();
+            jQuery("#overlay2").fadeIn(200);
             setTimeout(function() {
-                h("#copycheckimage").fadeIn(300)
+                jQuery("#copycheckimage").fadeIn(300)
             }, 200);
             setTimeout(function() {
-                h("#overlay2").fadeOut(200);
-                h("#nick").focus()
+                jQuery("#overlay2").fadeOut(200);
+                jQuery("#nick").focus()
             }, 1E3);
             eb = !1
         }
@@ -343,14 +345,14 @@
         }
 
         function Bb() {
-            h("#overlay").hide();
+            jQuery("#overlay").hide();
             T = !1
         }
 
         function Mc() {
-            h("#overlay").fadeIn(500);
-            la && h("#nick").focus();
-            0 <= Q && Y && n.hasConnection && (h("#basePanel").hide(), M.openStatsPage());
+            jQuery("#overlay").fadeIn(500);
+            la && jQuery("#nick").focus();
+            0 <= Q && Y && n.hasConnection && (jQuery("#basePanel").hide(), M.openStatsPage());
             0 > Q && (W.initSpeedupTutorial(), W.fadeOutGame())
         }
 
@@ -361,7 +363,7 @@
         }
 
         function ac() {
-            0 <= Q && Y && (bc || (h("#overlay").css({
+            0 <= Q && Y && (bc || (jQuery("#overlay").css({
                 "background-color": "rgba(0,0,0,0.4)"
             }), bc = !0), Ka++, 2 < Ka && (Ka = 0), nextTipID = Ka, La = !0);
             setTimeout(ac, 2500)
@@ -487,13 +489,13 @@
         }
         var N = !1,
             /*Fb = l.location.href.split("/"),*/
-            Fb = "https://powerline.coolmathgames.com"
+            Fb = fake_window_location.split("/")
             Na = Fb[2],
             alert("Na=", Na),
             fake_referrer = "https://www.coolmathgames.com/0-powerline-io",
-            fake_location_href = "powerline.coolmathgames.com",
+            fake_location_href = "https://powerline.coolmathgames.com",
             /*ec = l.location != l.parent.location ? y.referrer : y.location.href,*/
-            ec = l.location != l.parent.location ? fake_referrer : fake_location_href,
+            ec = fake_window_location != fake_window_parent_location ? fake_referrer : fake_location_href,
             kb = ec,
             lb = null,
             mb = ec.split("?");
@@ -504,23 +506,23 @@
             }
         var kb = "https://www.coolmathgames.com/0-powerline-io",
             Va = null,
-            Va = -1 != navigator.userAgent.indexOf("Edge") ? 2 : -1 != navigator.userAgent.indexOf("Firefox") ? 0 : -1 != navigator.userAgent.indexOf("MSIE") || 1 == !!y.documentMode ? 1 : 3;
-        1 != Va && h("#soundDiv").show();
+            Va = -1 != navigator.userAgent.indexOf("Edge") ? 2 : -1 != navigator.userAgent.indexOf("Firefox") ? 0 : -1 != navigator.userAgent.indexOf("MSIE") || 1 == !!document.documentMode ? 1 : 3;
+        1 != Va && jQuery("#soundDiv").show();
         queryString.r && (lb = queryString.r);
         queryString.d && (N = !0);
         StrEndsWith = function(a, c) {
             return -1 !== a.indexOf(c, a.length - c.length)
         };
-        StrEndsWith(Na, "coolmathgames.com") || "localhost" == Na || (l.location.href = "https://coolmathgames.com");
+        StrEndsWith(Na, "coolmathgames.com") || "localhost" == Na || (window.location.href = "https://coolmathgames.com");
         Ta() ||
-            (l.location.href = "https://www.coolmathgames.com/0-powerline-io");
+            (window.location.href = "https://www.coolmathgames.com/0-powerline-io", "google.com");
         Date.now || (Date.now = function() {
             return (new Date).getTime()
         });
         var Oc = Na.split(".");
         lastPart = Fb[Fb.length - 1];
         var hc = Oc.length,
-            Hb = "https:" == l.location.protocol,
+            Hb = "https:" == window.location.protocol,
             P, I, ic = "",
             Da = 1E3 / 30 * 3,
             qa, jc = 0,
@@ -556,7 +558,7 @@
             oc = !1,
             qb = 0,
             za = 0,
-            Q = l.localStorage.killCount;
+            Q = window.localStorage.killCount;
         if (void 0 == Q || "undefined" == Q) Q = 0;
         var Pc = Q,
             Wa = 0,
@@ -579,11 +581,11 @@
             rc = 0,
             sc = 40,
             F, S = 1,
-            ga = l.localStorage.muteVol;
+            ga = window.localStorage.muteVol;
         if (void 0 == ga || "undefined" == ga) ga = 1;
         var Oa = 0,
-            Ba = l.localStorage.arrows,
-            ta = l.localStorage.speedUpTut;
+            Ba = window.localStorage.arrows,
+            ta = window.localStorage.speedUpTut;
         ta || (ta = 0);
         var ib = "Awesome Formidable Exalted Colorful Frantic Majestic Exuberant Terrible Impressive Adorable Alert Amusing Bored Brave Calm Carefree Careless Chilly Clever Clumsy Cranky Crazy Excited Fantastic Foolish Friendly Fussy Fuzzy Generous Glowing Great Lumpy Messy Mighty Peppy Nimble Blithering Optimistic Plump Polite Proud Quick Quiet Rude Rusty Shining Silly Sizzling Sleepy Slimy Sloppy Smooth Sparkling Speedy Splendid Starving Steaming Stinky Strict Sturdy Surprised Tough Tricky Wild Wise Wonderful Worried Vigorous Delightful Haunted Colossal Vivacious Infuriating Rebellious Slippery Vengeful Fierce Maniacal Affluent Decrepit Glamorous Opulent Saucy Calamitous Egregious Feckless Insidious Irksome Judicious Nefarious Pernicious Petulant Tenacious Famous Flabbergasted Feral Sinister Fresh Adventurous Spoony Noisy Whimsical Amazing Delicate Hairless Classy Gangly Disguised Juicy Ancient Frosty Savage Fiery Enraged Surly Dastardly Cantankerous Freedom Hazardous Dramatic Victory Boisterous Simple Feisty".split(" "),
             jb = "Captain;Pilot;Commander;Squaddie;Scout;Turtle;Fox;Hawk;Falcon;Eagle;Jester;Joker;Potato;Sauce;Ace;Flyer;Driver;Turkey;Chicken;Donkey;Goat;Llama;Antelope;Defender;Weasel;Hedgehog;Koala;Wolf;Groundhog;Stranger;Wolverine;Honey Badger;Chameleon;Cook;Hippie;Boss;Goose;Crawdad;Ham Sandwich;Toaster;Jackhammer;Grandma;Hot Dog;Spoon;Salt Shaker;Wizard;Waistcoat;Shovel;Unicorn;Pinecone;Ninja;Samurai;Cowboy;Buccaneer;Vampire;Werewolf;Pirate;Ogre;Princess;Mentor;Fool;Cactus;Bigfoot;Farmer;Knight;Ghost;Towel;BLT;Sorceror;Dinosaur;Disaster;Baby;Phoenix;Detective;Investigator;Eyeball;Hamster;Toad;Wombat;Worm;Hare;Zombie;Mutant;Mime;Sheriff;Concoction;Toast;Lollipop;Pancake;Milkshake;Plumber;Chainsaw;Ice Cream;Penguin;Hammer;Criminal".split(";"),
@@ -592,28 +594,28 @@
             tc = 99,
             uc = 0,
             Qc = "LOL;EASY!;OOPS!;I DARE YOU!;GOTCHA!;RUN!;TEAM?;YES!;NO!;KILL THE KING!".split(";");
-        !ta && 3 < Q && (ta = 1, l.localStorage.speedUpTut = ta);
+        !ta && 3 < Q && (ta = 1, window.localStorage.speedUpTut = ta);
         var $a = !1;
-        "true" == l.localStorage.lq && (sa = !1);
+        "true" == window.localStorage.lq && (sa = !1);
         var Ra = null,
             vc = function() {
                 var a = "",
                     c = 81;
                 Hb && (a = "s", c = 444);
-                h.get("http" + a + "://powerline-master.coolmathgames.com:" + c + "/cc", function(a) {
+                jQuery.get("http" + a + "://powerline-master.coolmathgames.com:" + c + "/cc", function(a) {
                     Ra = a.substring(0, 2);
-                    l.localStorage.wingsCC = Ra;
-                    l.localStorage.wingsCCTime = +new Date;
+                    window.localStorage.wingsCC = Ra;
+                    window.localStorage.wingsCCTime = +new Date;
                     N && console.log("Fetched new country code: " + Ra)
                 }, "text")
             };
         (function() {
-            if (void 0 == l.localStorage.wingsCCTime ||
-                void 0 != l.localStorage.wingsCC && 2 != l.localStorage.wingsCC.length) N && console.log("Need to fetch new country code"), vc();
+            if (void 0 == window.localStorage.wingsCCTime ||
+                void 0 != window.localStorage.wingsCC && 2 != window.localStorage.wingsCC.length) N && console.log("Need to fetch new country code"), vc();
             else {
-                var a = +new Date - l.localStorage.wingsCCTime;
+                var a = +new Date - window.localStorage.wingsCCTime;
                 N && console.log("Time CC Delay: " + a);
-                288E5 < a ? (N && console.log("More than 8 hours passed. Fetching new CC"), vc()) : (Ra = l.localStorage.wingsCC, N && console.log("Reusing last CC: " + Ra))
+                288E5 < a ? (N && console.log("More than 8 hours passed. Fetching new CC"), vc()) : (Ra = window.localStorage.wingsCC, N && console.log("Reusing last CC: " + Ra))
             }
         })();
         var Tb = function() {
@@ -623,23 +625,23 @@
                 Kb = aa;
                 W.update(a);
                 W.draw(a);
-                l.requestAnimationFrame && l.requestAnimationFrame(Tb);
+                window.requestAnimationFrame && window.requestAnimationFrame(Tb);
                 Jb && (Jb = !1)
             },
             Rc =
             function() {
                 I = new Stats;
                 I.setMode(1);
-                var a = y.getElementById("canvas");
+                var a = document.getElementById("canvas");
                 I.domElement.style.position = "absolute";
                 I.domElement.style.left = .25 * a.width + "px";
                 I.domElement.style.top = a.height - 18 - 30 + "px";
-                y.getElementById("fps").appendChild(I.domElement);
+                document.getElementById("fps").appendChild(I.domElement);
                 P = new Stats;
                 P.domElement.style.position = "absolute";
                 P.domElement.style.left = .25 * a.width - 100 + "px";
                 P.domElement.style.top = a.height - 18 - 30 + "px";
-                y.getElementById("fps").appendChild(P.domElement);
+                document.getElementById("fps").appendChild(P.domElement);
                 setInterval(function() {
                     P.update()
                 }, 1E3 / 60);
@@ -647,71 +649,71 @@
                     "hidden";
                 P.domElement.style.visibility = "hidden"
             };
-        y.body.onselectstart = function() {
+        document.body.onselectstart = function() {
             return !1
         };
         var Yb;
-        l.clickPlay = function(a) {
+        window.clickPlay = function(a) {
             if (!this.achievementsOpen) {
                 if (Ta() && parent) {
                     var c = r.currentLevel() + 1,
                         c = (10 > c ? "0" : "") + c + ((10 > Q ? "00" : 100 > Q ? "0" : "") + Q);
-                    l.parent.postMessage(JSON.stringify({
+                    window.parent.postMessage(JSON.stringify({
                         eventType: "gameEvent",
                         key: "start",
                         value: c
                     }), "*")
                 }
                 W.clearSpeedupTutorial();
-                n.hasConnection ? L ? Bb() : (l.localStorage.nickIndexes = [Pa, Qa], Mb++, qa.mouseMoved = !1, Bb(), Yb = a, Kc(), 6 > Mb && R && 0 == Mb % 3 && R.showTip("Press 'M' to Toggle Sounds",
-                    4E3), nc && (h("#continueTop").hide(), h("#continueBR").hide(), h("#continue").hide(), h("#nickInput").show(), h("#skinPanel").hide(), h("#howto").show(), h("#beta").show(), nc = !1)) : (h("#topGui").hide(), h("#topGuiConnecting").show())
+                n.hasConnection ? L ? Bb() : (window.localStorage.nickIndexes = [Pa, Qa], Mb++, qa.mouseMoved = !1, Bb(), Yb = a, Kc(), 6 > Mb && R && 0 == Mb % 3 && R.showTip("Press 'M' to Toggle Sounds",
+                    4E3), nc && (jQuery("#continueTop").hide(), jQuery("#continueBR").hide(), jQuery("#continue").hide(), jQuery("#nickInput").show(), jQuery("#skinPanel").hide(), jQuery("#howto").show(), jQuery("#beta").show(), nc = !1)) : (jQuery("#topGui").hide(), jQuery("#topGuiConnecting").show())
             }
         };
         var Ja, Xb;
-        l.setSpectate = function(a) {};
-        l.setContinue = function() {
-            h("#topGui").show();
-            h("#roomFailed").hide();
+        window.setSpectate = function(a) {};
+        window.setContinue = function() {
+            jQuery("#topGui").show();
+            jQuery("#roomFailed").hide();
             lb = null;
             n.getServerAndConnect()
         };
-        l.copyRoomLink = function() {
-            h("#copyLink").hide();
-            h("#copyLinkBox").show();
-            var a = h("#roomlinkInput")[0];
+        window.copyRoomLink = function() {
+            jQuery("#copyLink").hide();
+            jQuery("#copyLinkBox").show();
+            var a = jQuery("#roomlinkInput")[0];
             a.value = kb + "?r=" + n.roomID;
             eb = !0;
             Vb() &&
-                (h("#copyButton")[0].childNodes[0].data = "Close", h("#safariTooltip").show());
+                (jQuery("#copyButton")[0].childNodes[0].data = "Close", jQuery("#safariTooltip").show());
             setTimeout(function() {
                 a.setSelectionRange(0, a.value.length);
                 a.select();
                 a.focus()
             }, 100)
         };
-        l.setCopy = function() {
-            var a = h("#roomlinkInput")[0];
+        window.setCopy = function() {
+            var a = jQuery("#roomlinkInput")[0];
             a.value = kb + "?r=" + n.roomID;
             a.setSelectionRange(0, a.value.length);
             a.select();
             a.focus();
-            if (Vb()) h("#copyLinkBox").hide(), h("#copyLink").show(), eb = !1;
+            if (Vb()) jQuery("#copyLinkBox").hide(), jQuery("#copyLink").show(), eb = !1;
             else {
                 try {
-                    y.execCommand("copy")
+                    document.execCommand("copy")
                 } catch (c) {}
                 Zb()
             }
         };
-        l.clickNoNames = function(a) {
+        window.clickNoNames = function(a) {
             Nb = !Nb;
             a.checked = Nb
         };
-        var wc = l.navigator.userAgent;
+        var wc = window.navigator.userAgent;
         (-1 < wc.indexOf("MSIE ") ||
-            -1 < wc.indexOf("Trident/")) && h("#sndIcon").hide();
+            -1 < wc.indexOf("Trident/")) && jQuery("#sndIcon").hide();
         var zb;
-        l.onblur = function() {
+        window.onblur = function() {
             N || (zb = setTimeout(Lc, 3E5));
             la = !1;
             S = 0;
@@ -720,19 +722,19 @@
                 if (1 == c.snake) c.onBlur()
             }
         };
-        l.onfocus = function(a) {
-            if (!a || a.target == l) {
+        window.onfocus = function(a) {
+            if (!a || a.target == window) {
                 zb && (clearTimeout(zb), zb = null);
                 Jb = la = !0;
                 for (var c in z) z[c].resume();
-                !n || n.hasConnection || Ta() ? T && h("#nick").focus() : n.getServerAndConnect();
+                !n || n.hasConnection || Ta() ? T && jQuery("#nick").focus() : n.getServerAndConnect();
                 1 == ga && (S = 1)
             }
         };
-        l.openStatsPageDetails = function(a) {
+        window.openStatsPageDetails = function(a) {
             M.openStatsPageDetails(a)
         };
-        l.closeStatsPageDetails = function() {
+        window.closeStatsPageDetails = function() {
             M.closeStatsPageDetails()
         };
         var Ca = 0,
@@ -741,7 +743,7 @@
             La = !1;
         setInterval(function() {
             if (T) {
-                var a = h("#tips")[0],
+                var a = jQuery("#tips")[0],
                     c = .5 * Math.PI;
                 Ca += .3;
                 Ca > c && 0 == La && (Ca = c);
@@ -768,23 +770,23 @@
         }, 50);
         tips.innerHTML = "GET CLOSE TO OTHER SNAKES TO BOOST";
         ac();
-        l.onbeforeunload = function() {
+        window.onbeforeunload = function() {
             if (L) return "Are you sure you want to quit?"
         };
-        y.oncontextmenu = function() {
+        document.oncontextmenu = function() {
             return !1
         };
-        l.toggleSound = function() {
-            1 == ga ? (S = ga = 0, h("#soundOffImg").show(), h("#soundOnImg").hide(), R && R.showTip("Sounds Disabled", 3E3)) : 0 == ga && (S = ga = 1, h("#soundOnImg").show(), h("#soundOffImg").hide(), R && R.showTip("Sounds Enabled", 3E3));
-            l.localStorage.muteVol = ga
+        window.toggleSound = function() {
+            1 == ga ? (S = ga = 0, jQuery("#soundOffImg").show(), jQuery("#soundOnImg").hide(), R && R.showTip("Sounds Disabled", 3E3)) : 0 == ga && (S = ga = 1, jQuery("#soundOnImg").show(), jQuery("#soundOffImg").hide(), R && R.showTip("Sounds Enabled", 3E3));
+            window.localStorage.muteVol = ga
         };
         var Ea = 0;
-        l.randomizeNicks = function() {
+        window.randomizeNicks = function() {
             Pa = parseInt(Math.random() * ib.length);
             Qa = parseInt(Math.random() * jb.length);
-            h("#nick")[0].value = ib[Pa] + " " + jb[Qa];
+            jQuery("#nick")[0].value = ib[Pa] + " " + jb[Qa];
             Ea += 180;
-            h("#refreshButton").css({
+            jQuery("#refreshButton").css({
                 transform: "rotate(" + Ea + "deg)",
                 "-ms-transform": "rotate(" + Ea + "deg)",
                 "-moz-transform": "rotate(" +
@@ -794,17 +796,17 @@
             })
         };
         var Sa = !1;
-        l.openAchievements = function() {
-            Sa || (M.openAchievementsPage(), h("#achievementsOpenImg").show(), h("#achievementsClosedImg").hide(), Sa = !0)
+        window.openAchievements = function() {
+            Sa || (M.openAchievementsPage(), jQuery("#achievementsOpenImg").show(), jQuery("#achievementsClosedImg").hide(), Sa = !0)
         };
-        l.closeAchievements = function() {
-            Sa && (M.closeAchievementsPage(), h("#achievementsClosedImg").show(), h("#achievementsOpenImg").hide(), Sa = !1)
+        window.closeAchievements = function() {
+            Sa && (M.closeAchievementsPage(), jQuery("#achievementsClosedImg").show(), jQuery("#achievementsOpenImg").hide(), Sa = !1)
         };
-        l.toggleAchievements = function() {
+        window.toggleAchievements = function() {
             Sa ? closeAchievements() : openAchievements()
         };
         setTimeout(function() {
-            h("#splashscreen").fadeOut(500, function() {
+            jQuery("#splashscreen").fadeOut(500, function() {
                 setTimeout(function() {
                         M.animateMainMenuXpBar()
                     },
@@ -812,15 +814,15 @@
             })
         }, 500);
         0 == ga && (ga = 1, toggleSound());
-        y.getElementById("overlay").onmousedown = function(a) {
-            return a.target == h("#nick")[0] ? !0 : !1
+        document.getElementById("overlay").onmousedown = function(a) {
+            return a.target == jQuery("#nick")[0] ? !0 : !1
         };
-        if (l.localStorage.nickIndexes) {
-            var xc = l.localStorage.nickIndexes.split(","),
+        if (window.localStorage.nickIndexes) {
+            var xc = window.localStorage.nickIndexes.split(","),
                 Pa = xc[0],
                 Qa = xc[1];
-            h("#nick")[0].value = ib[Pa] + " " + jb[Qa]
-        } else l.randomizeNicks();
+            jQuery("#nick")[0].value = ib[Pa] + " " + jb[Qa]
+        } else window.randomizeNicks();
         var yc = "'proxima-nova-1','proxima-nova-2', Arial Black";
         0 == Va && (yc = "Arial");
         wa.prototype = {
@@ -898,7 +900,7 @@
             },
             render: function() {
                 null ==
-                    this._canvas && (this._canvas = y.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
+                    this._canvas && (this._canvas = document.createElement("canvas"), this._ctx = this._canvas.getContext("2d"));
                 if (this._dirty) {
                     this._dirty = !1;
                     var a = this._canvas,
@@ -978,13 +980,13 @@
                     this.boostImage.onload = function() {}
                 };
                 this.loadTintImage = function(a, c, g) {
-                    var d = y.createElement("canvas"),
+                    var d = document.createElement("canvas"),
                         k = d.getContext("2d"),
                         f = a.width,
                         e = a.height;
                     d.width = f;
                     d.height = e;
-                    var b = y.createElement("canvas");
+                    var b = document.createElement("canvas");
                     b.width = f;
                     b.height = e;
                     f = b.getContext("2d");
@@ -1004,17 +1006,17 @@
                 var c = 0,
                     g = 0;
                 a.mousedown = function(a) {
-                    T ? M.isShowingStatsPage() ? (h("#basePanel").show(), h("#nick").focus(), h("#basePanel").hide()) : h("#nick").focus() : (g++, 2 < g && (Ba = void 0, g = c = 0), jc = a.clientX, kc = a.clientY)
+                    T ? M.isShowingStatsPage() ? (jQuery("#basePanel").show(), jQuery("#nick").focus(), jQuery("#basePanel").hide()) : jQuery("#nick").focus() : (g++, 2 < g && (Ba = void 0, g = c = 0), jc = a.clientX, kc = a.clientY)
                 };
                 a.keydown = function(d) {
                     32 != d.keyCode && 38 != d.keyCode &&
                         87 != d.keyCode && 37 != d.keyCode && 65 != d.keyCode && 40 != d.keyCode && 83 != d.keyCode && 39 != d.keyCode && 68 != d.keyCode || d.preventDefault();
                     if (T && (d.metaKey || d.ctrlKey) && 65 == d.keyCode) {
-                        var g = h("#nick")[0];
+                        var g = jQuery("#nick")[0];
                         g.setSelectionRange(0, g.value.length)
                     }
                     if (Sa && 27 == d.keyCode) closeAchievements();
-                    else if (g = M.isShowingStatsPage(), T && g) 13 == d.keyCode || 32 == d.keyCode ? clickPlay(l.localStorage.nick) : 27 == d.keyCode && (M.closeStatsPage(), h("#basePanel").show(), h("#nick").focus());
+                    else if (g = M.isShowingStatsPage(), T && g) 13 == d.keyCode || 32 == d.keyCode ? clickPlay(window.localStorage.nick) : 27 == d.keyCode && (M.closeStatsPage(), jQuery("#basePanel").show(), jQuery("#nick").focus());
                     else if (67 == d.keyCode && T && eb) setTimeout(function() {
                             Zb()
                         },
@@ -1040,9 +1042,9 @@
                         }
                         B ? (e = B.x, g = B.y, f = yb, d.preventDefault(), 38 == d.keyCode || 87 == d.keyCode ? 1 != a.direction && 3 != a.direction && 0 != a.direction && (a.direction = 1, a.turn(a.direction, e, g, f, 0)) : 37 == d.keyCode || 65 == d.keyCode ? 2 != a.direction && 4 != a.direction && 0 != a.direction && (a.direction = 2, a.turn(a.direction, e, g, f, 0)) : 40 == d.keyCode || 83 == d.keyCode ? 3 != a.direction && 1 != a.direction && 0 != a.direction && (a.direction = 3, a.turn(a.direction, e, g, f, 0)) : 39 !=
                             d.keyCode && 68 != d.keyCode || 4 == a.direction || 2 == a.direction || 0 == a.direction || (a.direction = 4, a.turn(a.direction, e, g, f, 0))) : Xa && (e = .01, d.shiftKey && (e = .1), 38 == d.keyCode ? D.zoom += e : 40 == d.keyCode && (D.zoom -= e), console.log(D.zoom), console.log(ia / 10));
-                        70 == d.keyCode ? (y.fullscreenElement || y.mozFullScreenElement || y.webkitFullscreenElement || y.msFullscreenElement ? y.exitFullscreen ? y.exitFullscreen() : y.msExitFullscreen ? y.msExitFullscreen() : y.mozCancelFullScreen ? y.mozCancelFullScreen() : y.webkitExitFullscreen && y.webkitExitFullscreen() :
-                            y.documentElement.requestFullscreen ? y.documentElement.requestFullscreen() : y.documentElement.msRequestFullscreen ? y.documentElement.msRequestFullscreen() : y.documentElement.mozRequestFullScreen ? y.documentElement.mozRequestFullScreen() : y.documentElement.webkitRequestFullscreen && y.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT), R.clearTip()) : 77 == d.keyCode ? toggleSound() : 90 == d.keyCode && N && L && (Pb = !Pb);
-                        2 < c && (Ba = 1, l.localStorage.arrows = Ba)
+                        70 == d.keyCode ? (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement ? document.exitFullscreen ? document.exitFullscreen() : document.msExitFullscreen ? document.msExitFullscreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitExitFullscreen && document.webkitExitFullscreen() :
+                            document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.msRequestFullscreen ? document.documentElement.msRequestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.webkitRequestFullscreen && document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT), R.clearTip()) : 77 == d.keyCode ? toggleSound() : 90 == d.keyCode && N && L && (Pb = !Pb);
+                        2 < c && (Ba = 1, window.localStorage.arrows = Ba)
                     }
                 };
                 a.keyup = function(a) {};
@@ -1052,9 +1054,9 @@
                     Sb ? (g = +new Date, f = g - rc, rc = g, 30 > f && (e += 30), e = B.addTurnPoint(a, e), g = 10 * e.x, f = 10 * e.y, n.sendTurnPoint(a, 1 == a || 3 == a ? g / 10 : -f / 10)) : n.sendDirection(a)
                 };
                 this.addListeners = function() {
-                    y.addEventListener("mousedown", a.mousedown, !1);
-                    y.addEventListener("keydown", a.keydown, !1);
-                    y.addEventListener("keyup", a.keyup, !1)
+                    document.addEventListener("mousedown", a.mousedown, !1);
+                    document.addEventListener("keydown", a.keydown, !1);
+                    document.addEventListener("keyup", a.keyup, !1)
                 }
             },
             Uc = function() {
@@ -1218,7 +1220,7 @@
                         m.globalAlpha = 1;
                         m.restore()
                     }
-                    v && (C = y.createElement("canvas"),
+                    v && (C = document.createElement("canvas"),
                         h = C.getContext("2d"), this.renderLeaderboard(h, C), v = !1);
                     C && L && this.drawLeaderboard(m);
                     w && (0 < n && z || !z || 0 < K) && (null == r && (h = parseInt(20 * s) + 1, l = new wa(h, F, !1, F), l.setValue(w), l.setUsingRoundedFrame(!0), l.setRoundedFrameStyle(H), l.setShadowBlur(2), r = l.render()), m.drawImage(r, ma / 2 - r.width / 2, 1.1 * r.height * (na ? 1 - K / 300 : K / 300) - r.height));
@@ -1494,7 +1496,7 @@
                     I && this.playSounds && (c = Math.max(0, (m - 30) / 70), F.sound.volume(c * Xc * oa * S, I));
                     Ga && this.playSounds &&
                         (F.sound._nodeById(Ga), U ? F.sound.volume(Yc * oa * S, Ga) : F.sound.volume(0, Ga));
-                    g && !ta && L && B == this && (Ia += a, 2E3 < Ia && (ta = 1, l.localStorage.speedUpTut = 1));
+                    g && !ta && L && B == this && (Ia += a, 2E3 < Ia && (ta = 1, window.localStorage.speedUpTut = 1));
                     pa -= a / 1E3 * 20;
                     0 > pa && (pa = 0)
                 };
@@ -2071,7 +2073,7 @@
                 var a = !1,
                     c, g, d = null;
                 this.preRenderSideLine = function(a) {
-                    var e = y.createElement("canvas"),
+                    var e = document.createElement("canvas"),
                         b = e.getContext("2d");
                     a ? (e.width = 18, e.height = 2 * d + 18) : (e.width = 2 * d + 18, e.height =
                         18);
@@ -2172,7 +2174,7 @@
                 this.update = function(a) {};
                 this.updateBoundaries = function() {};
                 this.preRenderColliders = function() {
-                    a = y.createElement("canvas");
+                    a = document.createElement("canvas");
                     var c = a.getContext("2d");
                     a.width = 160 * s;
                     a.height = 160 * s;
@@ -2292,12 +2294,12 @@
                                 b += 2;
                                 k = a.getUint8(b);
                                 b += 1;
-                                (f = z[c]) ? (f.killReason = k, f.killedByID = d, c = f == B, b = f.deleteNetwork(a, b), c && L && (r.signalWasKilled(f), L = !1, B = null, qa.angle = Math.PI, qa.throttle = 0, Q++, Wa = 0, l.localStorage.killCount = Q, R.fastHideTalkLayer(), Ta() && parent && (d = r.lastGameStats(), c = Math.min(99, Math.ceil(d.gameFoodEaten / 10)), d = Math.min(13, Math.ceil(d.gameTime / 3E4)), k = Math.min(41, Q - Pc), c = (10 > c ? "0" : "") + c, c += (100 > d ? "0" : "") + d, c += (100 > k ? "0" : "") + k, l.parent.postMessage(JSON.stringify({
+                                (f = z[c]) ? (f.killReason = k, f.killedByID = d, c = f == B, b = f.deleteNetwork(a, b), c && L && (r.signalWasKilled(f), L = !1, B = null, qa.angle = Math.PI, qa.throttle = 0, Q++, Wa = 0, window.localStorage.killCount = Q, R.fastHideTalkLayer(), Ta() && parent && (d = r.lastGameStats(), c = Math.min(99, Math.ceil(d.gameFoodEaten / 10)), d = Math.min(13, Math.ceil(d.gameTime / 3E4)), k = Math.min(41, Q - Pc), c = (10 > c ? "0" : "") + c, c += (100 > d ? "0" : "") + d, c += (100 > k ? "0" : "") + k, window.parent.postMessage(JSON.stringify({
                                     eventType: "dataEvent",
                                     key: "data",
                                     value: c
                                 }), "*")), Xa || $b())) : (console.log("ERROR: Entity does not exist: " +
-                                    c), l.location.href = l.location.href);
+                                    c), window.location.href = window.location.href);
                                 break;
                             default:
                                 console.log("Invalid entity flag")
@@ -2333,11 +2335,11 @@
                     else {
                         var c = "";
                         Hb && (c = "s");
-                        h.ajax({
+                        jQuery.ajax({
                             url: "http" + c + "://" + f,
                             type: "PUT",
                             success: function(b) {
-                                if ("0" == b) h("#topGui").hide(), h("#topGuiConnecting").hide(), h("#roomFailed").show();
+                                if ("0" == b) jQuery("#topGui").hide(), jQuery("#topGuiConnecting").hide(), jQuery("#roomFailed").show();
                                 else {
                                     var a = b.split("!");
                                     n.roomID = 0;
@@ -2391,7 +2393,7 @@
                     } else setTimeout(n.getServerAndConnect, 100)
                 };
                 this.disconnect = function() {
-                    n.directed && (Ta() || (l.location.hash = ""), n.directed = !1);
+                    n.directed && (Ta() || (window.location.hash = ""), n.directed = !1);
                     n.roomID = 0;
                     d && d.close()
                 };
@@ -2416,11 +2418,11 @@
                     n.sendHello();
                     n.ping();
                     n.sentHello = !0;
-                    h("#copyLink").fadeIn(300);
-                    h("#topGui").show();
-                    h("#topGuiConnecting").hide();
-                    h(".btn-needs-server").removeAttr("disabled");
-                    h("#nick").focus()
+                    jQuery("#copyLink").fadeIn(300);
+                    jQuery("#topGui").show();
+                    jQuery("#topGuiConnecting").hide();
+                    jQuery(".btn-needs-server").removeAttr("disabled");
+                    jQuery("#nick").focus()
                 };
                 this.processConfig = function(a, b) {
                     var c = 1,
@@ -2468,7 +2470,7 @@
                         L = !0;
                         Bb();
                         r.signalGameStart()
-                    } else 163 == b ? (g(e), objectCount = Object.keys(z).length, y.title = 0 < objectCount && N ? "powerline.io (" + ob + ", " + objectCount + ")" : "powerline.io!") : 164 == b ? a(e) : 165 == b && (b = c(e), d = e.getUint16(b, !0), b += 2, 0 < d ? (d = e.getUint32(b, !0), b += 4, e = e.getUint16(b, !0), b += 2, R.updateRank(e, d), e != tc && (r.signalUpdateRank(e), tc = e), d != uc && (r.signalUpdateScore(d), uc = d)) : R.updateRank(0, 0))
+                    } else 163 == b ? (g(e), objectCount = Object.keys(z).length, document.title = 0 < objectCount && N ? "powerline.io (" + ob + ", " + objectCount + ")" : "powerline.io!") : 164 == b ? a(e) : 165 == b && (b = c(e), d = e.getUint16(b, !0), b += 2, 0 < d ? (d = e.getUint32(b, !0), b += 4, e = e.getUint16(b, !0), b += 2, R.updateRank(e, d), e != tc && (r.signalUpdateRank(e), tc = e), d != uc && (r.signalUpdateScore(d), uc = d)) : R.updateRank(0, 0))
                 };
                 this.connectionClosed = function() {
                     r.signalWasKilled(null);
@@ -2476,10 +2478,10 @@
                     n.sentHello = !1;
                     n.hasConnection = !1;
                     $b(-1);
-                    h("#topGui").hide();
-                    h("#topGuiConnecting").show();
-                    h("#copyLink").fadeOut(300);
-                    h(".btn-needs-server").attr("disabled", "disabled");
+                    jQuery("#topGui").hide();
+                    jQuery("#topGuiConnecting").show();
+                    jQuery("#copyLink").fadeOut(300);
+                    jQuery(".btn-needs-server").attr("disabled", "disabled");
                     var a = this.connectRetry;
                     5 < a && (a = 5);
                     la && setTimeout(this.getServerAndConnect, 1E3 + 1E3 * a);
@@ -2739,43 +2741,43 @@
                     var a = Z * b,
                         c = -50 + 50 * b + "%",
                         c = "translate(" + c + "," + c + ") scale(" + b + ")";
-                    h("#canvas").css({
+                    jQuery("#canvas").css({
                         transform: c
                     });
-                    h("#canvas").css({
+                    jQuery("#canvas").css({
                         "-ms-transform": c
                     });
-                    h("#canvas").css({
+                    jQuery("#canvas").css({
                         "-webkit-transform": c
                     });
                     s = .92 * Math.max(Z / 850, ma / 1500);
-                    s *= l.devicePixelRatio / Lb;
+                    s *= window.devicePixelRatio / Lb;
                     za = Math.min(1, a / 850);
                     $a = !0;
                     c = 440 * za;
                     if (0 < c) {
                         var d = "translate(-50%,0%) scale(" + za + ")";
-                        h("#mainDialog").css({
+                        jQuery("#mainDialog").css({
                             transform: d
                         });
-                        h("#mainDialog").css({
+                        jQuery("#mainDialog").css({
                             "-ms-transform": d
                         });
-                        h("#mainDialog").css({
+                        jQuery("#mainDialog").css({
                             "-webkit-transform": d
                         });
                         d = "scale(" + 1 / za + ")";
-                        h("#mainMenuXpBar").css({
+                        jQuery("#mainMenuXpBar").css({
                             transform: d
                         });
-                        h("#mainMenuXpBar").css({
+                        jQuery("#mainMenuXpBar").css({
                             "-ms-transform": d
                         });
-                        h("#mainMenuXpBar").css({
+                        jQuery("#mainMenuXpBar").css({
                             "-webkit-transform": d
                         });
                         a = a / 2 - .38 * c;
-                        h("#mainDialog").css({
+                        jQuery("#mainDialog").css({
                             top: a + "px"
                         })
                     }
@@ -2853,7 +2855,7 @@
                     if (L || T) {
                         Pb && (Ob = .6);
                         pb += (Ob - pb) / 10;
-                        k.zoom = 1 / (l.devicePixelRatio / Lb) * pb * 1;
+                        k.zoom = 1 / (window.devicePixelRatio / Lb) * pb * 1;
                         k.zoom *= s;
                         var a = k.x,
                             c = k.y;
@@ -2936,11 +2938,11 @@
                     k ? b.drawImage(k, a, c, this.width, this.height, f + this.x, e + this.y, this.width, this.height) : b.drawImage(this.canvas, 0, 0, this.width, this.height, f + this.x, e + this.y, this.width, this.height)
                 };
                 this.renderTintedFrame = function(b) {
-                    var d = y.createElement("canvas"),
+                    var d = document.createElement("canvas"),
                         g = d.getContext("2d");
                     d.width = this.width;
                     d.height = this.height;
-                    var h = y.createElement("canvas");
+                    var h = document.createElement("canvas");
                     h.width = this.width;
                     h.height = this.height;
                     var J = h.getContext("2d");
@@ -2955,7 +2957,7 @@
                     return b
                 };
                 this.getImageCopy = function() {
-                    var b = y.createElement("canvas");
+                    var b = document.createElement("canvas");
                     b.width = this.width;
                     b.height = this.height;
                     var d = b.getContext("2d");
@@ -2970,7 +2972,7 @@
                     }
                 };
                 this.generateTintImage2 = function(b, d, g, h) {
-                    var J = y.createElement("canvas");
+                    var J = document.createElement("canvas");
                     J.width = this.width;
                     J.height = this.height;
                     var l = J.getContext("2d");
@@ -2983,7 +2985,7 @@
                     return b
                 };
                 this.generateTintImage = function(b, a, c, d) {
-                    var g = y.createElement("canvas");
+                    var g = document.createElement("canvas");
                     g.width = this.width;
                     g.height = this.height;
                     var k = g.getContext("2d");
@@ -3001,11 +3003,11 @@
                 this.generateRGBKs =
                     function() {
                         var b = [],
-                            d = y.createElement("canvas");
+                            d = document.createElement("canvas");
                         d.getContext("2d");
                         d.width = this.width;
                         d.height = this.height;
-                        d = y.createElement("canvas");
+                        d = document.createElement("canvas");
                         d.width = this.width;
                         d.height = this.height;
                         d = d.getContext("2d");
@@ -3031,11 +3033,11 @@
                         return b
                     };
                 this.renderToCanvas = function() {
-                    var b = y.createElement("canvas"),
+                    var b = document.createElement("canvas"),
                         d = b.getContext("2d");
                     b.width = this.width;
                     b.height = this.height;
-                    var e = y.createElement("canvas");
+                    var e = document.createElement("canvas");
                     e.width = this.width;
                     e.height = this.height;
                     e.getContext("2d");
@@ -4225,11 +4227,11 @@
                     X = "PrgLBS",
                     ja = "PrgLX";
                 this.getStoredInt = function(a, b) {
-                    var c = l.localStorage.getItem(a);
+                    var c = window.localStorage.getItem(a);
                     return c ? parseInt(c) : b
                 };
                 this.setStoredInt = function(a, b) {
-                    l.localStorage.setItem(a, String(b))
+                    window.localStorage.setItem(a, String(b))
                 };
                 var ba = null;
                 this.setupStayinAliveAchievement = function() {
@@ -4589,9 +4591,9 @@
                 };
                 this.readStats();
                 this.updateLevel();
-                l.localStorage.removeItem("bestLength");
-                l.localStorage.removeItem("bestKillStreak");
-                l.localStorage.removeItem("bestTop")
+                window.localStorage.removeItem("bestLength");
+                window.localStorage.removeItem("bestKillStreak");
+                window.localStorage.removeItem("bestTop")
             },
             qd = function() {
                 var a = !1,
@@ -4601,31 +4603,31 @@
                 };
                 var g = function(b) {
                         a = !0;
-                        h("#achievementNotification .achievementName")[0].innerText = b.name;
-                        h("#achievementNotification .achievementDesc")[0].innerText =
+                        jQuery("#achievementNotification .achievementName")[0].innerText = b.name;
+                        jQuery("#achievementNotification .achievementDesc")[0].innerText =
                             b.description;
-                        h("#achievementNotification .achievementIcon")[0].src = "images/achievements/" + b.icon;
-                        h("#achievementNotification").fadeIn(500, function() {
+                        jQuery("#achievementNotification .achievementIcon")[0].src = "images/achievements/" + b.icon;
+                        jQuery("#achievementNotification").fadeIn(500, function() {
                             setTimeout(d, 3E3)
                         });
                         F.playSound("achievement", .3 * S, 1, $, null)
                     },
                     d = function() {
-                        h("#achievementNotification").fadeOut(500, function() {
+                        jQuery("#achievementNotification").fadeOut(500, function() {
                             if (0 < c.length) {
                                 var b = c.shift();
                                 g(b)
                             } else a = !1
                         })
                     },
-                    k = h("#mainMenuLevel")[0],
-                    f = h("#endScreenLevel")[0],
-                    e = h("#endScreenLevelFrame")[0],
-                    b = h("#endScreenLevelParticles")[0],
-                    l = h("#mainMenuXpBarDiv")[0],
-                    m = h("#endScreenXpBarDiv")[0],
-                    n = h("#mainMenuXpBarParticles")[0],
-                    s = h("#endScreenXpBarParticles")[0],
+                    k = jQuery("#mainMenuLevel")[0],
+                    f = jQuery("#endScreenLevel")[0],
+                    e = jQuery("#endScreenLevelFrame")[0],
+                    b = jQuery("#endScreenLevelParticles")[0],
+                    l = jQuery("#mainMenuXpBarDiv")[0],
+                    m = jQuery("#endScreenXpBarDiv")[0],
+                    n = jQuery("#mainMenuXpBarParticles")[0],
+                    s = jQuery("#endScreenXpBarParticles")[0],
                     t = e.width,
                     q = e.height,
                     w = [b.src, b.src + "?a=0"],
@@ -4667,25 +4669,25 @@
                             0 == z && (z = parseInt(f.style.fontSize.replace("px", "")));
                             b.src = w[y];
                             y = (y + 1) % w.length;
-                            h(b).show();
-                            h(e).animate({
+                            jQuery(b).show();
+                            jQuery(e).animate({
                                 width: 1.5 * t + "px",
                                 height: 1.5 * q + "px"
                             }, 400, "swing");
-                            h(f).animate({
+                            jQuery(f).animate({
                                 fontSize: 2 * z + "px"
                             }, 400, "swing", function() {
                                 f.innerText = I + 1;
-                                h(e).animate({
+                                jQuery(e).animate({
                                     width: t + "px",
                                     height: q + "px"
                                 }, 400, "swing");
-                                h(b).fadeOut(400);
-                                h(f).animate({
+                                jQuery(b).fadeOut(400);
+                                jQuery(f).animate({
                                     fontSize: z + "px"
                                 }, 400, "swing", function() {
                                     f.innerText = I + 1;
-                                    h(b).hide();
+                                    jQuery(b).hide();
                                     M.animateStatsPageLevelAndXpBar()
                                 })
                             });
@@ -4694,22 +4696,22 @@
                     }
                 };
                 this.animateXpBarFromTo = function(a, b, c, d, e, f) {
-                    0 == K && (B = 74, D = h("#mainMenuXpBarImg")[0].width, K = D - B);
+                    0 == K && (B = 74, D = jQuery("#mainMenuXpBarImg")[0].width, K = D - B);
                     var g;
                     g = r.isMaxLevel(c) ?
                         e : r.totalXpToLevelUp(c);
                     c = d / g;
                     a.style.maxWidth = B + K * c + "px";
-                    h(b).hide();
-                    e == d ? f && f() : (e /= g, d = B + K * e, c = e - c, e = 1E3 + 500 * c, h(a).animate({
+                    jQuery(b).hide();
+                    e == d ? f && f() : (e /= g, d = B + K * e, c = e - c, e = 1E3 + 500 * c, jQuery(a).animate({
                         maxWidth: d + "px"
-                    }, e, "swing", f), .1 <= c && h(b).fadeIn(200).delay(e - 400).fadeOut(200))
+                    }, e, "swing", f), .1 <= c && jQuery(b).fadeIn(200).delay(e - 400).fadeOut(200))
                 };
                 var H = null;
                 this.updateStatsPage = function() {
                     var a;
                     if (null === H) {
-                        var b = h("#statsPage .endScreenStatsDetails"),
+                        var b = jQuery("#statsPage .endScreenStatsDetails"),
                             c = b[0],
                             d = c.parentNode;
                         H = [c];
@@ -4718,21 +4720,21 @@
                     }
                     var e = r.lastGameStats();
                     this.closeStatsPageDetails();
-                    h("#endScreenScore")[0].innerText =
+                    jQuery("#endScreenScore")[0].innerText =
                         O(e.gameScore);
-                    h("#endScreenKills")[0].innerText = O(e.gameKills);
-                    h("#endScreenRank")[0].innerText = e.gameBestRank;
+                    jQuery("#endScreenKills")[0].innerText = O(e.gameKills);
+                    jQuery("#endScreenRank")[0].innerText = e.gameBestRank;
                     var f = function(a, b, c, d, e) {
                             b < a.length ? b = a[b] : (b = a[0].cloneNode(!0), a[0].parentNode.appendChild(b));
                             b.querySelector(".endScreenStatLineLeft").innerText = c;
                             b.querySelector(".endScreenStatLineRight").innerText = O(e ? d : -Math.abs(d));
                             e ? (b.classList.remove("endScreenStatLineNegative"), b.classList.add("endScreenStatLinePositive")) : (b.classList.remove("endScreenStatLinePositive"), b.classList.add("endScreenStatLineNegative"));
-                            h(b).show()
+                            jQuery(b).show()
                         },
                         g = 0,
-                        k = h(H[0]).find(".endScreenStatLine"),
+                        k = jQuery(H[0]).find(".endScreenStatLine"),
                         l = 0,
-                        m = h(H[1]).find(".endScreenStatLine");
+                        m = jQuery(H[1]).find(".endScreenStatLine");
                     k.hide();
                     m.hide();
                     var n = 0,
@@ -4755,40 +4757,40 @@
                         if (b = e.gamePenalties.get(a)) a = r.penaltyInfo(a), t += b * Math.abs(a.xp), f(k, g,
                             a.name, b * a.xp, !1), g++
                     });
-                    h("#endScreenKillsXp")[0].innerText = O(n);
-                    h("#endScreenRankXp")[0].innerText = O(q);
-                    0 < s || 0 < t ? (a = 0 >= t ? "BONUSES" : 0 >= s ? "PENALTIES" : "BONUSES &amp; PENALTIES", h("#endScreenBonusStatLineLabel")[0].innerHTML = a, h("#endScreenBonusStatLineXp")[0].innerText = O(s - t), H[0].querySelector(".endScreenStatsDetailsTotal").innerText = O(s - t), h("#endScreenBonusStatLine").show()) : h("#endScreenBonusStatLine").hide();
+                    jQuery("#endScreenKillsXp")[0].innerText = O(n);
+                    jQuery("#endScreenRankXp")[0].innerText = O(q);
+                    0 < s || 0 < t ? (a = 0 >= t ? "BONUSES" : 0 >= s ? "PENALTIES" : "BONUSES &amp; PENALTIES", jQuery("#endScreenBonusStatLineLabel")[0].innerHTML = a, jQuery("#endScreenBonusStatLineXp")[0].innerText = O(s - t), H[0].querySelector(".endScreenStatsDetailsTotal").innerText = O(s - t), jQuery("#endScreenBonusStatLine").show()) : jQuery("#endScreenBonusStatLine").hide();
                     if (0 < e.gameAchievements.size) {
                         var v = 0;
                         r.allAchievementsIds().forEach(function(a, b, c) {
                             if (b =
                                 e.gameAchievements.get(a)) a = r.achievementInfo(a), v += b * a.xp, f(m, l, a.name, b * a.xp, !0), l++
                         });
-                        h("#endScreenAchievementsStatLineXp")[0].innerText = O(v);
+                        jQuery("#endScreenAchievementsStatLineXp")[0].innerText = O(v);
                         H[1].querySelector(".endScreenStatsDetailsTotal").innerText = O(v);
-                        h("#endScreenAchievementsStatLine").show()
-                    } else h("#endScreenAchievementsStatLine").hide();
-                    h("#endScreenTotalXp")[0].innerText = O(e.gameXp)
+                        jQuery("#endScreenAchievementsStatLine").show()
+                    } else jQuery("#endScreenAchievementsStatLine").hide();
+                    jQuery("#endScreenTotalXp")[0].innerText = O(e.gameXp)
                 };
                 this.openStatsPage = function() {
                     var a = r.lastGameStats(),
                         b = "COLLIDED",
                         c = "";
                     1 == a.killReason ? (b = "ZAPPED BY", c = ic) : 3 == a.killReason && (b = "ZAPPED YOURSELF");
-                    h("#endScreenMessage")[0].innerText =
+                    jQuery("#endScreenMessage")[0].innerText =
                         b;
-                    h("#endScreenMessageKiller")[0].innerText = c;
-                    h("#statsPage").show();
+                    jQuery("#endScreenMessageKiller")[0].innerText = c;
+                    jQuery("#statsPage").show();
                     setTimeout(function() {
                         M.animateStatsPageLevelAndXpBar()
                     }, 500)
                 };
                 this.closeStatsPage = function() {
-                    h("#statsPage").hide();
+                    jQuery("#statsPage").hide();
                     this.closeStatsPageDetails()
                 };
                 this.isShowingStatsPage = function() {
-                    return h("#statsPage").is(":visible")
+                    return jQuery("#statsPage").is(":visible")
                 };
                 this.openStatsPageDetails = function(a) {
                     this.closeStatsPageDetails();
@@ -4796,18 +4798,18 @@
                         var b;
                         switch (a) {
                             case 0:
-                                b = h("#endScreenBonusStatLine")[0];
+                                b = jQuery("#endScreenBonusStatLine")[0];
                                 break;
                             case 1:
-                                b = h("#endScreenAchievementsStatLine")[0]
+                                b = jQuery("#endScreenAchievementsStatLine")[0]
                         }
                         b.classList.add("endScreenStatLineExpanded");
-                        h(H[a]).show()
+                        jQuery(H[a]).show()
                     }
                 };
                 this.closeStatsPageDetails = function() {
-                    h("#statsPage .endScreenStatLineExpanded").removeClass("endScreenStatLineExpanded");
-                    h("#statsPage .endScreenStatsDetails").hide()
+                    jQuery("#statsPage .endScreenStatLineExpanded").removeClass("endScreenStatLineExpanded");
+                    jQuery("#statsPage .endScreenStatsDetails").hide()
                 };
                 var G = null,
                     x = 0,
@@ -4816,7 +4818,7 @@
                 this.updateAchievementsPage = function() {
                     var a, b = r.allAchievementsIds();
                     if (null === G) {
-                        var c = h("#achievementsPage .achievementCard"),
+                        var c = jQuery("#achievementsPage .achievementCard"),
                             d = c[0],
                             e = d.parentNode;
                         G = [d];
@@ -4835,35 +4837,35 @@
                         d.querySelector(".achievementDesc").innerText = e.description;
                         f = r.achievementCurrentProgress(f);
                         if (f >= e.totalProgress) c++, d.classList.remove("achievementCardLocked"), d.classList.add("achievementCardUnlocked"), d.querySelector(".achievementIcon").src = "images/achievements/" +
-                            e.icon, h(d.querySelector(".achievementProgressHolder")).hide();
+                            e.icon, jQuery(d.querySelector(".achievementProgressHolder")).hide();
                         else if (d.classList.remove("achievementCardUnlocked"), d.classList.add("achievementCardLocked"), d.querySelector(".achievementIcon").src = "images/achievements/" + e.iconLocked, 1 < e.totalProgress) {
-                            h(d.querySelector(".achievementProgressHolder")).show();
+                            jQuery(d.querySelector(".achievementProgressHolder")).show();
                             var g = d.querySelector(".achievementProgressSlider");
-                            0 >= f ? h(g).hide() : (g.style.width = x + f / e.totalProgress * N + "px", h(g).show());
+                            0 >= f ? jQuery(g).hide() : (g.style.width = x + f / e.totalProgress * N + "px", jQuery(g).show());
                             d.querySelector(".achievementProgressText").innerText = O(f) + " / " + O(e.totalProgress)
-                        } else h(d.querySelector(".achievementProgressHolder")).hide()
+                        } else jQuery(d.querySelector(".achievementProgressHolder")).hide()
                     }
-                    h("#achievementsEarned")[0].innerText =
+                    jQuery("#achievementsEarned")[0].innerText =
                         c + " of " + b.length + " Earned"
                 };
                 this.openAchievementsPage = function() {
-                    h("#achievementsPage").fadeIn(500)
+                    jQuery("#achievementsPage").fadeIn(500)
                 };
                 this.closeAchievementsPage = function() {
-                    h("#achievementsPage").fadeOut(500)
+                    jQuery("#achievementsPage").fadeOut(500)
                 };
                 this.updateMainMenuLevel();
                 this.updateAchievementsPage()
             };
-        l.onload = function() {
+        window.onload = function() {
             Rc();
             if (Modernizr.canvas && Modernizr.websockets) {
-                null == W && (l.devicePixelRatio && (Lb = 1 < l.devicePixelRatio ? 2 : 1), W = new rd(y.getElementById("canvas")), l.addEventListener("resize", W.resize, !1), qa = new Tc, qa.addListeners(), l.requestAnimationFrame ? l.requestAnimationFrame(Tb) :
-                    setInterval(Tb, 1E3 / 60), h("#overlay").show());
+                null == W && (window.devicePixelRatio && (Lb = 1 < window.devicePixelRatio ? 2 : 1), W = new rd(document.getElementById("canvas")), window.addEventListener("resize", W.resize, !1), qa = new Tc, qa.addListeners(), window.requestAnimationFrame ? window.requestAnimationFrame(Tb) :
+                    setInterval(Tb, 1E3 / 60), jQuery("#overlay").show());
                 W.resize();
                 var a = "LOW";
                 sa && (a = "HIGH");
-                var c = h("#graphicsID")[0];
+                var c = jQuery("#graphicsID")[0];
                 c && (c.childNodes[0].data = "GRAPHICS: " + a)
             } else N && console.log("unsupported-browser!")
         }
