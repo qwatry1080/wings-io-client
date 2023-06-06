@@ -487,12 +487,13 @@
                 y: a
             }
         }
+        alert("doing stuff");
         var N = !1,
             /*Fb = l.location.href.split("/"),*/
             Fb = fake_window_location.split("/"),
-            alert(Fb),
+            temporary = alert(Fb),
             Na = Fb[2],
-            alert("Na=", Na),
+            temporary2 = alert("Na=", Na),
             fake_referrer = "https://www.coolmathgames.com/0-powerline-io",
             fake_location_href = "https://powerline.coolmathgames.com",
             /*ec = l.location != l.parent.location ? y.referrer : y.location.href,*/
