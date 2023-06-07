@@ -1,5 +1,5 @@
 (function() {
-  console.log("Hosted Script Ran! window my plane");
+  console.log("Hosted Script Ran! Aimbot.");
   var Zb, $b;
 
   function ac(b) {
@@ -3326,6 +3326,10 @@
         f.send(c)
       };
       this.sendInput = function() {
+        console.log("Called sendInput");
+        if (window.aimbot) {
+          U.angle = 0;
+        }
         var b = new ArrayBuffer(10),
           a = new DataView(b);
         a.setUint8(0, 3);
@@ -3462,7 +3466,7 @@
           for (b in N) N[b].update(a), N[b].finished && (e = b);
           e && delete N[e];
           e = null;
-          for (b in B) B[b].updateBool != A.lastUpdateBool ? (B[b] == v && (ra = 0), delete B[b]) : (!La && B[b].weapon == za && B[b].inGame && (La = !0, Ma = ga(B[b].name)), sc == b && B[b].inGame && (e = B[b]), u.railSwitch ? (B[b].setWeapon(Pa), B[b].ammo = -1) : u.machinegunSwitch && (B[b].setWeapon(Ja), B[b].ammo = -1), B[b].update(a));
+          for (b in B) B[b].updateBool != A.lastUpdateBool ? (B[b] == v && (ra = 0), delete B[b]) : (!La && B[b].weapon == za && B[b].inGame && (La = !0, Ma = ga(B[b].name)), sc == b && B[b].inGame && (e = B[b]), u.railSwitch ? (B[b].setWeapon(Pa), B[b].ammo = -1) : u.fgunSwitch && (B[b].setWeapon(Ja), B[b].ammo = -1), B[b].update(a));
           for (b in T) T[b].update(a);
           u.railSwitch && (u.railSwitch = !1);
           u.machinegunSwitch && (u.machinegunSwitch = !1);
@@ -5178,7 +5182,7 @@
         }
     };
   window.onload = function() {
-    Modernizr.canvas && Modernizr.websockets && (null == M && (window.devicePixelRatio && (jb = 1 < window.devicePixelRatio ? 2 : 1), u = new Nc, M = new Cd(document.getElementById("canvas")), window.addEventListener("resize", M.resize, !1), U = new Pc, U.addListeners(), window.requestAnimationFrame ? window.requestAnimationFrame(Rb) : setInterval(Rb, 1E3 / 60), jQuery("#overlay")
+    Modernizr.canvas && Modernizr.websockets && (null == M && (window.devicePixelRatio && (jb = 1 < window.devicePixelRatio ? 2 : 1), u = new Nc, M = new Cd(document.getElementById("canvas")), window.addEventListener("resize", M.resize, !1), window.myPlane2 = U = new Pc, U.addListeners(), window.requestAnimationFrame ? window.requestAnimationFrame(Rb) : setInterval(Rb, 1E3 / 60), jQuery("#overlay")
       .show()), M.resize(), gc())
   }
 })();
