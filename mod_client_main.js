@@ -1,5 +1,5 @@
 (function() {
-  console.log("Hosted Script Ran!");
+  console.log("Hosted Script Ran! window my plane");
   var Zb, $b;
 
   function ac(b) {
@@ -3158,7 +3158,7 @@
             wc = r;
             xc = d
           } else if (161 == a || 171 == a) xa = !0, G && ("undefined" != typeof messageHandlers && messageHandlers.didEnterGame ? messageHandlers.didEnterGame(JSON.stringify({})) :
-          window.webkit.messageHandlers.didEnterGame.postMessage({})), c = 1, f = d.getUint32(c, !0), c += 4, h = d.getFloat32(c, !0), c += 4, q = -d.getFloat32(c, !0), c += 4, n = d.getFloat32(c, !0), c += 4, k = d.getUint8(c, !0), c += 1, m = d.getUint8(c, !0), c += 1, d = d.getUint32(c, !0), v = new Xb, v.id = f, v.setColorID(k), v.setDecalID(m), v.setName(myName), v.setFlagInfo(d), v.setPose(h, q, n), v.updateBool = A.lastUpdateBool, B[f] = v, ra = f, Z = !0, Db(), Ua(), 161 == a && (Za[f] = 0);
+          window.webkit.messageHandlers.didEnterGame.postMessage({})), c = 1, f = d.getUint32(c, !0), c += 4, h = d.getFloat32(c, !0), c += 4, q = -d.getFloat32(c, !0), c += 4, n = d.getFloat32(c, !0), c += 4, k = d.getUint8(c, !0), c += 1, m = d.getUint8(c, !0), c += 1, d = d.getUint32(c, !0), v = new Xb, v.id = f, v.setColorID(k), v.setDecalID(m), v.setName(myName), v.setFlagInfo(d), v.setPose(h, q, n), v.updateBool = A.lastUpdateBool, window.myPlane = B[f] = v, ra = f, Z = !0, Db(), Ua(), 161 == a && (Za[f] = 0);
         else if (162 == a || 178 == a) b(d, a, !1), this.firstClientListing = !1, Ua();
         else if (169 == a || 172 == a) b(d, a, !1),
           Ua();
