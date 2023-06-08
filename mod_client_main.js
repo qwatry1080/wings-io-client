@@ -1125,7 +1125,8 @@
         if (window.aimbot) {
           window.aimbotTarget = null;
           let dist2Target = Number.POSITIVE_INFINITY;
-          for (const plane in window.allPlanes) {
+          for (const i in window.allPlanes) {
+            let plane = window.allPlanes[i];
             if (plane.x == window.myPlane2.x && plane.y == window.myPlane2.y) {
               continue;
             }
