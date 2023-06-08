@@ -1136,8 +1136,8 @@
               dist2Target = d2;
             }
           }
-          clientX = window.aimbotTarget.x - window.myPlane2.x;
-          clientY = window.aimbotTarget.y - window.myPlane2.y;
+          //clientX = window.aimbotTarget.x - window.myPlane2.x;
+          //clientY = window.aimbotTarget.y - window.myPlane2.y;
         }
         
         if (!Y && (b.mouseMoved = !0, qc = clientX, rc = clientY, e)) {
@@ -3376,6 +3376,14 @@
       };
       this.sendInput = function() {
         console.log("Called sendInput");
+        if (window.aimbotTarget && window.myPlane) {
+          let dx = window.myPlane.x - window.aimbotTarget.x;
+          let dy = window.myPlane.y - window.aimbotTarget.y;
+          //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
+          let a;
+          (a = Math.atan(dx / -dy), 0 > -dy && (a = Math.PI + a), a += Math.PI / 2, U.angle = a);
+          console.log("SET angle=", U.angle);
+        }
         var b = new ArrayBuffer(10),
           a = new DataView(b);
         a.setUint8(0, 3);
@@ -3538,6 +3546,8 @@
             y: (d.height / 2 + (z.y * z.zoom - d.height / 2)) / z.zoom
           };
           ya.update(a);
+          //U.angle is set here. z.x, z.y, qc, and rc are st by mouse movement.
+          //U.hover also set.
           if (!G && null != v)
             if (U.mouseMoved) {
               a = 1;
