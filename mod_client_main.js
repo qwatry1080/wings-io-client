@@ -1168,7 +1168,7 @@
           d = a.clientY
         }*/
       };
-      function aimbot(keypress) {
+      function aimbotToggle(keypress) {
         if (!window.myPlane||!window.allPlanes||!window.myPlane2) {
           return;
         }
@@ -1181,7 +1181,7 @@
         document.addEventListener("mousedown", b.mousedown, !1);
         document.addEventListener("mousemove", b.mousemove, !1);
         document.addEventListener("mouseup", b.mouseup, !1);
-        document.addEventListener("keydown", aimbot);
+        document.addEventListener("keydown", aimbotToggle);
         document.addEventListener("keydown", b.keydown, !1);
         document.addEventListener("keyup", b.keyup, !1)
       }
