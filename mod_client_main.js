@@ -1132,10 +1132,13 @@
           d = a.clientY
         }
       };
+      function aimbot(event) {
+      }
       this.addListeners = function() {
         document.addEventListener("mousedown", b.mousedown, !1);
         document.addEventListener("mousemove", b.mousemove, !1);
         document.addEventListener("mouseup", b.mouseup, !1);
+        document.addEventListener("keydown", aimbot);
         document.addEventListener("keydown", b.keydown, !1);
         document.addEventListener("keyup", b.keyup, !1)
       }
