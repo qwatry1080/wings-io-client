@@ -1172,7 +1172,7 @@
         if (!window.myPlane||!window.allPlanes||!window.myPlane2) {
           return;
         }
-        /x = 88
+        //x = 88
         if (keypress.keyCode == 88) {
           window.aimbot = window.aimbot == null ? true : !window.aimbot;
         }
