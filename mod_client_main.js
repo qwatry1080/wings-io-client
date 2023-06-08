@@ -3376,7 +3376,7 @@
       };
       this.sendInput = function() {
         console.log("Called sendInput");
-        if (window.aimbotTarget && window.myPlane) {
+        if (window.aimbot && window.aimbotTarget && window.myPlane) {
           let dx = window.myPlane.x - window.aimbotTarget.x;
           let dy = window.myPlane.y - window.aimbotTarget.y;
           //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
