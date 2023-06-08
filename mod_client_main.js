@@ -1118,7 +1118,42 @@
       b.mouseup = function(a) {
         Y || (Z ? 0 == a.button && A.sendShooting(!1) : e = !1)
       };
+      window.dist2 = (a, b) => (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
       b.mousemove = function(a) {
+        let clientX = a.clientX;
+        let clientY = a.clientY;
+        if (window.aimbot) {
+          window.aimbotTarget = null;
+          let dist2Target = Number.POSITIVE_INFINITY;
+          for (const plane in window.allPlanes) {
+            if (plane.x == window.myPlane2.x && plane.y == window.myPlane2.y) {
+              continue;
+            }
+            let d2 = dist2(plane, window.myPlane2);
+            if (d2 < dist2Target) {
+              window.aimbotTarget = plane;
+              dist2Target = d2;
+            }
+          }
+          clientX = window.aimbotTarget.x - window.myPlane2.x;
+          clientY = window.aimbotTarget.y - window.myPlane2.y;
+        }
+        
+        if (!Y && (b.mouseMoved = !0, qc = clientX, rc = clientY, e)) {
+          var c = clientY - d,
+            g = z.x,
+            h = z.y,
+            g = g - (clientX - f),
+            h = h - c;
+          h < -E / 2 ? h = -E / 2 : h > E / 2 && (h = E / 2);
+          g < -$ ? g = -$ : g > $ && (g = $);
+          z.setPosition(g, h);
+          f = clientX;
+          d = clientY
+        }
+        
+        
+        /*
         if (!Y && (b.mouseMoved = !0, qc = a.clientX, rc = a.clientY, e)) {
           var c = a.clientY - d,
             g = z.x,
@@ -1130,9 +1165,16 @@
           z.setPosition(g, h);
           f = a.clientX;
           d = a.clientY
-        }
+        }*/
       };
-      function aimbot(event) {
+      function aimbot(keypress) {
+        if (!window.myPlane||!window.allPlanes||!window.myPlane2) {
+          return;
+        }
+        /x = 88
+        if (keypress.keyCode == 88) {
+          window.aimbot = true;
+        }
       }
       this.addListeners = function() {
         document.addEventListener("mousedown", b.mousedown, !1);
