@@ -1174,7 +1174,7 @@
         }
         /x = 88
         if (keypress.keyCode == 88) {
-          window.aimbot = true;
+          window.aimbot = window.aimbot == null ? true : !window.aimbot;
         }
       }
       this.addListeners = function() {
@@ -1888,6 +1888,9 @@
           M.moveRight && (this.controlAngle -= this.rotSpeed);
           360 < this.controlAngle ? this.controlAngle = 0 : 0 > this.controlAngle && (this.controlAngle = 360);
           var k = fa((R - this.lastUpdate) / Jb, 0, 1);
+          if (window.aimbot) {
+            k = 1;
+          }
           this.prevX = this.x;
           this.prevY = this.y;
           var m = k * (this.dstY - this.origY) + this.origY;
@@ -3373,9 +3376,6 @@
       };
       this.sendInput = function() {
         console.log("Called sendInput");
-        if (window.aimbot) {
-          U.angle = 0;
-        }
         var b = new ArrayBuffer(10),
           a = new DataView(b);
         a.setUint8(0, 3);
