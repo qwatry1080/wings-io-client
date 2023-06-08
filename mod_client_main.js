@@ -1119,6 +1119,25 @@
         Y || (Z ? 0 == a.button && A.sendShooting(!1) : e = !1)
       };
       window.dist2 = (a, b) => (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
+      window.getAimbotTarget = function() {
+        if (window.aimbotTarget == null || !window.aimbotTarget.inGame || window.targetDist > 1000) {
+          window.aimbotTarget = null;
+          let dist2Target = Number.POSITIVE_INFINITY;
+          for (const i in window.allPlanes) {
+            let plane = window.allPlanes[i];
+            if (plane.x == window.myPlane2.x && plane.y == window.myPlane2.y) {
+              console.log("Found myself");
+              continue;
+            }
+            let d2 = dist2(plane, window.myPlane2);
+            if (d2 < dist2Target) {
+              window.aimbotTarget = plane;
+              dist2Target = d2;
+            }
+          }
+          window.targetDist = Math.sqrt(dist2Target);
+        }
+      }
       b.mousemove = function(a) {
         let clientX = a.clientX;
         let clientY = a.clientY;
@@ -3376,7 +3395,8 @@
       };
       this.sendInput = function() {
         console.log("Called sendInput");
-        if (window.aimbot && window.aimbotTarget && window.myPlane) {
+        if (window.aimbot && window.myPlane) {
+          window.getAimbotTarget();
           let dx = window.myPlane.x - window.aimbotTarget.x;
           let dy = window.myPlane.y - window.aimbotTarget.y;
           //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
