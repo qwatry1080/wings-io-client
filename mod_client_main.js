@@ -3414,7 +3414,7 @@
           let dy = window.myPlane.y - window.aimbotTarget.y;
           //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
           let a;
-          (a = Math.atan(dx / -dy), 0 > -dy && (a = Math.PI + a), a += Math.PI / 2, U.angle = a);
+          (a = Math.atan(-dy / dx), 0 > dx && (a = Math.PI + a), a += Math.PI / 2, U.angle = a);
           console.log("SET angle=", U.angle);
         }
         var b = new ArrayBuffer(10),
