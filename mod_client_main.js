@@ -3407,15 +3407,15 @@
         f.send(c)
       };
       this.sendInput = function() {
-        console.log("Called sendInput");
+        //console.log("Called sendInput");
         if (window.aimbot && window.myPlane) {
           window.getAimbotTarget();
           let dx = window.myPlane.x - window.aimbotTarget.x;
           let dy = window.myPlane.y - window.aimbotTarget.y;
           //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
           let a;
-          (a = Math.atan(-dy / dx), 0 > dx && (a = Math.PI + a), a += Math.PI / 2, U.angle = -a);
-          console.log("SET angle=", U.angle);
+          (a = Math.atan(-dy / dx), 0 > dx && (a = Math.PI + a), a += Math.PI / 2, U.angle = a);
+          //console.log("SET angle=", U.angle);
         }
         var b = new ArrayBuffer(10),
           a = new DataView(b);
