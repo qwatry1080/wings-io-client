@@ -3406,16 +3406,16 @@
         for (h = 0; h < b.length; ++h) e.setUint16(3 + 2 * h, b.charCodeAt(h), !0);
         f.send(c)
       };
+      window.getAngleToTarget() {
+          let dx = window.myPlane.x - window.aimbotTarget.x;
+          let dy = window.myPlane.y - window.aimbotTarget.y;
+          return Math.atan2(dy, dx);
+      }
       this.sendInput = function() {
         //console.log("Called sendInput");
         if (window.aimbot && window.myPlane) {
           window.getAimbotTarget();
-          let dx = window.myPlane.x - window.aimbotTarget.x;
-          let dy = window.myPlane.y - window.aimbotTarget.y;
-          //U.angle = Math.atan2(dx, -dy) - Math.PI/2;
-          let a;
-          (a = Math.atan(-dy / dx), 0 > dx && (a = Math.PI + a), a += Math.PI / 2, U.angle = a);
-          //console.log("SET angle=", U.angle);
+          U.angle = window.getAngleToTarget();
         }
         var b = new ArrayBuffer(10),
           a = new DataView(b);
