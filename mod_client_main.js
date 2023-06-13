@@ -3406,10 +3406,14 @@
         for (h = 0; h < b.length; ++h) e.setUint16(3 + 2 * h, b.charCodeAt(h), !0);
         f.send(c)
       };
-      window.getAngleToTarget() {
+      window.getAngleToTarget = function() {
           let dx = window.myPlane.x - window.aimbotTarget.x;
           let dy = window.myPlane.y - window.aimbotTarget.y;
-          return Math.atan2(dy, dx);
+          let angle = Math.atan2(dy, dx) + Math.PI/2;
+          if (angle < 0) {
+            angle += 360;
+          }
+          return angle;
       }
       this.sendInput = function() {
         //console.log("Called sendInput");
