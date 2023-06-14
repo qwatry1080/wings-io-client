@@ -3411,7 +3411,7 @@
           let dy = window.myPlane.y - window.aimbotTarget.y;
           let angle = Math.atan2(dy, -dx) + Math.PI/2;
           if (angle < 0) {
-            angle += 360;
+            angle += Math.PI * 2;
           }
           return angle;
       }
