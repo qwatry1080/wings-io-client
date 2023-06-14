@@ -3409,7 +3409,7 @@
       window.getAngleToTarget = function() {
           let dx = window.myPlane.x - window.aimbotTarget.x;
           let dy = window.myPlane.y - window.aimbotTarget.y;
-          let angle = Math.atan2(dy, dx) + Math.PI/2;
+          let angle = Math.atan2(dy, -dx) + Math.PI/2;
           if (angle < 0) {
             angle += 360;
           }
