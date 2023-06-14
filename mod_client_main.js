@@ -1120,6 +1120,7 @@
       };
       window.dist2 = (a, b) => (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
       window.getAimbotTarget = function() {
+        /*
         let bestScore = -1;
         for (const id in window.allPlanes) {
           const plane = window.allPlanes[id];
@@ -1131,9 +1132,9 @@
             bestScore = plane.score;
           }
         }
-        return;
+        return;*/
         
-        if (window.aimbotTarget == null || !window.aimbotTarget.inGame || window.targetDist > 1000) {
+        if (window.aimbotTarget == null || !window.aimbotTarget.inGame || dist2Target(window.aimbotTarget) > 200*200) {
           window.aimbotTarget = null;
           let dist2Target = Number.POSITIVE_INFINITY;
           for (const i in window.allPlanes) {
@@ -1148,7 +1149,6 @@
               dist2Target = d2;
             }
           }
-          window.targetDist = Math.sqrt(dist2Target);
         }
       }
       b.mousemove = function(a) {
